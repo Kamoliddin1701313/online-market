@@ -1,0 +1,108 @@
+// React icon kutubxonasidagi iconkalar
+import { TbAdjustmentsHorizontal } from "react-icons/tb";
+import { MdYoutubeSearchedFor } from "react-icons/md";
+import { IoMdAdd } from "react-icons/io";
+import { HiOutlineLogout } from "react-icons/hi";
+import { FaRegUser } from "react-icons/fa";
+import { TbShoppingBagHeart } from "react-icons/tb";
+
+import React, { useEffect, useState } from "react";
+import logo from "../../../public/images/online_bozor_logo.webp";
+import Image from "next/image";
+import Link from "next/link";
+import Motion from "../framer-motion/Motion";
+import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+// import Loading from "../loading/Loading";
+function Navbar() {
+  const router = useRouter();
+  const reduxToken = useSelector((state) => state.cart.access);
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const savedToken = localStorage.getItem("access");
+    if (savedToken) {
+      setToken(savedToken);
+    }
+  }, [reduxToken]);
+
+  return (
+    <div className="h-[70px] bg-bg-color w-full top-0 left-0 fixed z-50 py-3">
+      {/* <Loading /> */}
+      <div className="max-w-[1280px] mx-auto flex items-center h-full gap-8 justify-between">
+        {/* Logo icon buttoni */}
+        <Link
+          href="/"
+          className="h-full rounded-[8px] px-2.5 w-1/8 text-center flex items-center border-[2px] border-border-color hover:bg-white hover:border-white duration-300 ease-in"
+        >
+          <Image src={logo} alt="logo" className="w-[120px]" />
+        </Link>
+
+        {/* categoriya va search va actegoriya qo'shiladigan divlar jamlanmasi */}
+        <div className="flex items-center gap-5 h-full w-full">
+          <div className="h-full">
+            <button className="border-[2px] border-border-color cursor-pointer h-full rounded-[8px] flex items-center justify-center px-2.5 hover:bg-white duration-300 ease-in hover:border-white">
+              <TbAdjustmentsHorizontal className="text-[24px]" />
+            </button>
+          </div>
+
+          <div className="h-full w-full">
+            <form className="flex items-center border-[2px] border-border-color h-full w-full rounded-[25px] overflow-hidden">
+              <input
+                type="search"
+                autoComplete="off"
+                placeholder="Mahsulot qidirish..."
+                className="pl-5 pr-2 placeholder-[#000] outline-none w-full h-full text-black border-none bg-transparent"
+              />
+              <button
+                type="button"
+                aria-label="Qidirish"
+                className="px-5 h-full bg-light cursor- duration-300 ease-in border-none hover:bg-white"
+              >
+                <MdYoutubeSearchedFor className="text-[22px] text-primary text-[#000]" />
+              </button>
+            </form>
+          </div>
+
+          <button className="flex items-center gap-2.5 border-[2px] hover:border-white border-border-color h-full rounded-[8px] px-3.5 cursor-pointer hover:bg-white duration-300 ease-in">
+            <IoMdAdd />
+            <span>Qo'shish</span>
+          </button>
+        </div>
+
+        <div className="flex items-center gap-5">
+          <button className="text-[18px] border-b-[2px] border-black cursor-pointer leading-5">
+            uzb
+          </button>
+
+          <button className="text-[18px] border-b-[2px] border-black cursor-pointer leading-5">
+            rus
+          </button>
+
+          {token ? (
+            <button className="cursor-pointer">
+              <HiOutlineLogout className="text-[24px] mt-[3px]" />
+            </button>
+          ) : (
+            <button
+              onClick={() => router.push("/auth/login")}
+              className="cursor-pointer"
+            >
+              <FaRegUser className="text-[18px] mt-[3px]" />
+            </button>
+          )}
+
+          <button type="button" aria-label="Sevimlilar" className="relative">
+            <TbShoppingBagHeart className="text-[22px] cursor-pointer" />
+            <span className="absolute -top-[15px] -right-[15px] bg-[#636A79] text-white rounded-full text-[14px] px-[6px] font-medium">
+              0
+            </span>
+          </button>
+        </div>
+      </div>
+      <Motion />
+    </div>
+  );
+}
+
+export default Navbar;
