@@ -5,6 +5,7 @@ import { useState } from "react";
 
 function AddProductsModal() {
   const dispatch = useDispatch();
+  const [categoriyModal, setCategoriyModal] = useState(false);
   const [category, setCategory] = useState({
     category_id: "",
     title: "",
@@ -24,25 +25,56 @@ function AddProductsModal() {
 
   const handleAddCategoriya = (e) => {
     e.preventDefault();
-    console.log(category);
+  };
+
+  const categoryModalFunction = () => {
+    setCategoriyModal((p) => !p);
   };
 
   return (
     <div className="fixed flex bg-border-color inset-0 justify-center items-center z-50">
-      <div className="animate-fadeInDown w-3/5 mx-auto rounded-xl p-6 shadow-lg bg-[#313b52]">
+      <div className="animate-fadeInDown relative w-3/5 mx-auto rounded-xl p-6 shadow-lg bg-[#313b52]">
         <h2 className="font-normal text-[28px] mb-4 text-white">
           Maxsulotlar qo'shish
         </h2>
 
+        <button
+          onClick={() => setCategoriyModal((p) => !p)}
+          className="h-[48px] text-white outline-none rounded-[12px] border-[2px] border-bg-color bg-transparent px-3 mb-[14px] duration-300 ease-in hover:bg-bg-color"
+        >
+          Categoriya tanlash
+        </button>
+
+        {categoriyModal ? (
+          <div className="absolute grid place-items-center bg-[#404040cd] rounded-xl w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="animate-fadeScale w-1/2 min-h-[200px] bg-white border-none p-5 rounded-[12px] flex gap-3 items-start">
+              <button
+                onClick={categoryModalFunction}
+                className="rounded-[12px] px-5 py-1 border-[2px] border-bg-color bg-transparent hover:bg-bg-color duration-300 ease-in"
+              >
+                Uy
+              </button>
+              <button
+                onClick={categoryModalFunction}
+                className="rounded-[12px] px-5 py-1 border-[2px] border-bg-color bg-transparent hover:bg-bg-color duration-300 ease-in"
+              >
+                Moshina
+              </button>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+
         <form onSubmit={handleAddCategoriya} className="flex flex-col gap-3.5">
-          <input
+          {/* <input
             onChange={productValue}
             name="category_id"
             autoComplete="off"
             type="text"
             placeholder="ID"
             className="w-[50px] h-[20px] p-4 text-white outline-none rounded-full border-[2px] border-bg-color bg-transparent"
-          />
+          /> */}
 
           <input
             onChange={productValue}

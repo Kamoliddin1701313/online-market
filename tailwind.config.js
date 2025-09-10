@@ -30,10 +30,15 @@ module.exports = {
           "0%": { opacity: "0", transform: "translateY(-20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        fadeScale: {
+          "0%": { opacity: "0", transform: "scale(0)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
       },
       animation: {
         fadeInUp: "fadeInUp 0.8s ease-out forwards",
         fadeInDown: "fadeInDown 0.8s ease-out forwards",
+        fadeScale: "fadeScale 0.8s ease-out forwards",
       },
     },
   },

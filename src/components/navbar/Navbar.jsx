@@ -13,13 +13,21 @@ import Link from "next/link";
 import Motion from "../framer-motion/Motion";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutModalFunction, addProductsModal } from "@/store/slice/slice";
+import {
+  logoutModalFunction,
+  addProductsModal,
+  getLocalStorageToken,
+} from "@/store/slice/slice";
+import { useEffect } from "react";
 
 function Navbar() {
   const router = useRouter();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.cart.access);
-  console.log(token, "TOKEN");
+
+  useEffect(() => {
+    dispatch(getLocalStorageToken());
+  }, [dispatch]);
 
   return (
     <div className="h-[70px] bg-bg-color w-full top-0 left-0 fixed z-30 py-3">
