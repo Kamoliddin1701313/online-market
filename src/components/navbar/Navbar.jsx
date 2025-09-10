@@ -19,6 +19,7 @@ function Navbar() {
   const router = useRouter();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.cart.access);
+  console.log(token, "TOKEN");
 
   return (
     <div className="h-[70px] bg-bg-color w-full top-0 left-0 fixed z-30 py-3">

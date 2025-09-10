@@ -2,7 +2,6 @@
 
 import { FaHome } from "react-icons/fa";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
-import { IoSettingsOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import { PiShoppingCartBold } from "react-icons/pi";
 import { usePathname, useRouter } from "next/navigation";
@@ -10,7 +9,7 @@ import { MdPostAdd } from "react-icons/md";
 import { VscRequestChanges } from "react-icons/vsc";
 import { FaRegClock } from "react-icons/fa";
 
-function Sidebar() {
+function Sidebar({ sidebarMenu }) {
   const route = useRouter();
   const pathname = usePathname();
 
@@ -81,9 +80,15 @@ function Sidebar() {
   };
 
   return (
-    <div className="relative">
-      <div className={`flex flex-col gap-2.5`}>
-        <span className="px-4 mt-3 text-bg-color font-semibold">Browse</span>
+    <div className="">
+      <div className={`flex w-full flex-col bg-white`}>
+        <span
+          className={`${
+            !sidebarMenu ? "px-4" : "px-2 text-center"
+          } my-3 text-bg-color font-semibold duration-300 ease-in`}
+        >
+          Browse
+        </span>
 
         {categoriyaData &&
           categoriyaData?.map((value, index) => {
@@ -93,22 +98,31 @@ function Sidebar() {
               <button
                 onClick={() => categoriesDetail(value.link)}
                 key={index}
-                className={`flex items-center w-full py-2.5 px-4 gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff]
-                    
-                  ${isActiveLink ? "bg-[#789597ff]" : ""}
-                  
-                  `}
+                className={`${
+                  !sidebarMenu ? "px-4" : "px-2 justify-center"
+                } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff]
+                  ${isActiveLink ? "bg-[#789597ff]" : ""}`}
               >
                 <span>{value?.icon}</span>
 
-                <span className="text-[18px] transition-all duration-300 ease-in-out">
-                  {value.name}
-                </span>
+                {!sidebarMenu ? (
+                  <span className="text-[18px] transition-all duration-300 ease-in-out">
+                    {value.name}
+                  </span>
+                ) : (
+                  ""
+                )}
               </button>
             );
           })}
 
-        <span className="px-4 text-bg-color font-semibold">Selling</span>
+        <span
+          className={`${
+            !sidebarMenu ? "px-4" : "px-2 text-center"
+          } my-3 text-bg-color font-semibold duration-300 ease-in`}
+        >
+          Selling
+        </span>
 
         {sellingData &&
           sellingData?.map((value, index) => {
@@ -118,22 +132,30 @@ function Sidebar() {
               <button
                 onClick={() => categoriesDetail(value.link)}
                 key={index}
-                className={`flex items-center w-full py-2.5 px-4 gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff]
-                    
-                  ${isActiveLink ? "bg-[#789597ff]" : ""}
-                  
-                  `}
+                className={`${
+                  !sidebarMenu ? "px-4" : "px-2 justify-center"
+                } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff] 
+                  ${isActiveLink ? "bg-[#789597ff]" : ""}`}
               >
                 <span>{value?.icon}</span>
-
-                <span className="text-[18px] transition-all duration-300 ease-in-out">
-                  {value.name}
-                </span>
+                {!sidebarMenu ? (
+                  <span className="text-[18px] transition-all duration-300 ease-in-out">
+                    {value.name}
+                  </span>
+                ) : (
+                  ""
+                )}
               </button>
             );
           })}
 
-        <span className="px-4 text-bg-color font-semibold">Buying</span>
+        <span
+          className={`${
+            !sidebarMenu ? "px-4" : "px-2 text-center"
+          } my-3 text-bg-color font-semibold`}
+        >
+          Buying
+        </span>
 
         {buyingData &&
           buyingData?.map((value, index) => {
@@ -143,25 +165,24 @@ function Sidebar() {
               <button
                 onClick={() => categoriesDetail(value.link)}
                 key={index}
-                className={`flex items-center w-full py-2.5 px-4 gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff]
-                    
-                  ${isActiveLink ? "bg-[#789597ff]" : ""}
-                  
-                  `}
+                className={`${
+                  !sidebarMenu ? "px-4" : "px-2 justify-center"
+                } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff] 
+                  ${isActiveLink ? "bg-[#789597ff]" : ""}`}
               >
                 <span>{value?.icon}</span>
 
-                <span className="text-[18px] transition-all duration-300 ease-in-out">
-                  {value.name}
-                </span>
+                {!sidebarMenu ? (
+                  <span className="text-[18px] transition-all duration-300 ease-in-out">
+                    {value.name}
+                  </span>
+                ) : (
+                  ""
+                )}
               </button>
             );
           })}
       </div>
-
-      {/* <button className="absolute top-0 bg-[#E3E3E3] w-[32px] h-[36px] rounded-r-[10px] flex justify-center items-center cursor-pointer">
-        <IoSettingsOutline className="text-[20px]" />
-      </button> */}
     </div>
   );
 }

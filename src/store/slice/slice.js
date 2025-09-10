@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isOpenBox: false, // sidebar yopiq bo'lsin default
   logoutModal: false,
   addProducts: false,
   access: null,
@@ -12,10 +11,6 @@ const slice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    toggleSidebar: (state) => {
-      state.isOpenBox = !state.isOpenBox;
-    },
-
     setLocalStorageToken: (state, action) => {
       const { access } = action.payload;
       state.access = access;
@@ -60,7 +55,6 @@ const slice = createSlice({
 });
 
 export const {
-  toggleSidebar,
   setLocalStorageToken,
   removeLocalStorageToken,
   getLocalStorageToken,

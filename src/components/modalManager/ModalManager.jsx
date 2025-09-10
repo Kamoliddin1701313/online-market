@@ -18,8 +18,6 @@ function ModalManager() {
     return () => document.body.classList.remove("overflow-hidden");
   }, [logoutFunction, addProductsFunction]);
 
-  console.log(addProductsFunction, "sss");
-
   return (
     <>
       {logoutFunction && <LogoutModal />}
