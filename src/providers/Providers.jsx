@@ -1,16 +1,15 @@
 "use client";
 import Footer from "@/components/footer/Footer";
+import ModalManager from "@/components/modalManager/ModalManager";
 import Navbar from "@/components/navbar/Navbar";
 import Sidebar from "@/components/sidebar/Sidebar";
 import { store } from "@/store/store";
-import React, { useState } from "react";
 import { Provider } from "react-redux";
 
 function Providers({ children }) {
-  const [openSidebar, setOpenSidebar] = useState(false);
   return (
     <Provider store={store}>
-      <div className="bg-body-color">
+      <div className="bg-body-color relative">
         <Navbar />
 
         <div
@@ -27,6 +26,8 @@ function Providers({ children }) {
         </div>
 
         <Footer />
+
+        <ModalManager />
       </div>
     </Provider>
   );

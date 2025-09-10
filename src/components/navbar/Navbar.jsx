@@ -1,3 +1,4 @@
+"use client";
 // React icon kutubxonasidagi iconkalar
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
 import { MdYoutubeSearchedFor } from "react-icons/md";
@@ -6,31 +7,22 @@ import { HiOutlineLogout } from "react-icons/hi";
 import { FaRegUser } from "react-icons/fa";
 import { TbShoppingBagHeart } from "react-icons/tb";
 
-import React, { useEffect, useState } from "react";
 import logo from "../../../public/images/online_bozor_logo.webp";
 import Image from "next/image";
 import Link from "next/link";
 import Motion from "../framer-motion/Motion";
 import { useRouter } from "next/navigation";
-import { useSelector } from "react-redux";
-// import Loading from "../loading/Loading";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutModalFunction, addProductsModal } from "@/store/slice/slice";
+
 function Navbar() {
   const router = useRouter();
-  const reduxToken = useSelector((state) => state.cart.access);
-  const [token, setToken] = useState(null);
-
-  useEffect(() => {
-    const savedToken = localStorage.getItem("access");
-    if (savedToken) {
-      setToken(savedToken);
-    }
-  }, [reduxToken]);
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.cart.access);
 
   return (
-    <div className="h-[70px] bg-bg-color w-full top-0 left-0 fixed z-50 py-3">
-      {/* <Loading /> */}
+    <div className="h-[70px] bg-bg-color w-full top-0 left-0 fixed z-30 py-3">
       <div className="max-w-[1280px] mx-auto flex items-center h-full gap-8 justify-between">
-        {/* Logo icon buttoni */}
         <Link
           href="/"
           className="h-full rounded-[8px] px-2.5 w-1/8 text-center flex items-center border-[2px] border-border-color hover:bg-white hover:border-white duration-300 ease-in"
@@ -64,7 +56,10 @@ function Navbar() {
             </form>
           </div>
 
-          <button className="flex items-center gap-2.5 border-[2px] hover:border-white border-border-color h-full rounded-[8px] px-3.5 cursor-pointer hover:bg-white duration-300 ease-in">
+          <button
+            onClick={() => dispatch(addProductsModal())}
+            className="flex items-center gap-2.5 border-[2px] hover:border-white border-border-color h-full rounded-[8px] px-3.5 cursor-pointer hover:bg-white duration-300 ease-in"
+          >
             <IoMdAdd />
             <span>Qo'shish</span>
           </button>
@@ -80,7 +75,10 @@ function Navbar() {
           </button>
 
           {token ? (
-            <button className="cursor-pointer">
+            <button
+              onClick={() => dispatch(logoutModalFunction())}
+              className="cursor-pointer"
+            >
               <HiOutlineLogout className="text-[24px] mt-[3px]" />
             </button>
           ) : (
