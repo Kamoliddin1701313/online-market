@@ -58,7 +58,6 @@ function AddProductsModal() {
   return (
     <div className="fixed flex bg-border-color inset-0 justify-center items-center z-50">
       <div className="animate-fadeInDown relative w-3/5 mx-auto rounded-xl p-6 shadow-lg bg-[#313b52]">
-      
         <h2 className="font-normal text-[28px] mb-4 text-white">
           Maxsulotlar qo'shish
         </h2>
@@ -69,6 +68,8 @@ function AddProductsModal() {
         >
           Categoriya tanlash
         </button>
+
+        {/* Categoriya modal */}
 
         {categoriyModal ? (
           <div className="absolute grid place-items-center bg-[#404040cd] rounded-xl w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
