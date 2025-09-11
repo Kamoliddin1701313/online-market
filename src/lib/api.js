@@ -2,11 +2,13 @@
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function apiFetch(endpoint, options = {}) {
+  const token =
+    typeof window !== "undefined" ? localStorage.getItem("access") : null;
+
   const res = await fetch(`${BASE_URL}${endpoint}`, {
     headers: {
       "Content-Type": "application/json",
-      // token bo'lsa shu yerda qo'shish mumkin
-      // "Authorization": `Bearer ${TOKEN}`
+      ...(token && { Authorization: `Bearer ${token}` }),
     },
     ...options,
   });

@@ -11,6 +11,8 @@ import Image from "next/image";
 async function Products() {
   const productList = await get("products/");
 
+  console.log(productList, "productList");
+
   return (
     <div className="">
       <div className="animate-fadeInDown w-full flex justify-between items-center px-5 py-3 border-[2px] shadow-[0_0_8px_rgba(0,0,0,0.25)] border-[#50505070] rounded-[20px]">
