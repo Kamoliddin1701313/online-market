@@ -11,7 +11,7 @@ import Image from "next/image";
 async function Products() {
   const productList = await get("products/");
 
-  console.log(productList, "productList");
+  console.log(productList, "SSSS");
 
   return (
     <div className="">

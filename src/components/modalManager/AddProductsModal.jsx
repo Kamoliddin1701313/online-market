@@ -1,10 +1,18 @@
 "use client";
 import { useDispatch } from "react-redux";
 import { addProductsModal } from "@/store/slice/slice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { get, post } from "@/lib/api";
 
 function AddProductsModal() {
+  const [categoryName, setCategoryName] = useState([]);
+  const [categoryId, setCategoryId] = useState(null);
+
+  const getCategoryName = async () => {
+    const data = await get("categories/");
+    setCategoryName(data);
+  };
+
   const dispatch = useDispatch();
   const [categoriyModal, setCategoriyModal] = useState(false);
   const [category, setCategory] = useState({
@@ -20,40 +28,46 @@ function AddProductsModal() {
     dispatch(addProductsModal());
   };
 
-  const categoryModalFunction = () => {
+  const categoryModalFunction = (id) => {
+    setCategoryId(id);
     setCategoriyModal((p) => !p);
   };
 
   const productValue = (e) => {
-    setCategory({ ...category, [e.target.name]: e.target.value });
+    if (e.target.name === "image") {
+      setCategory({ ...category, image: e.target.files[0] });
+    } else {
+      setCategory({ ...category, [e.target.name]: e.target.value });
+    }
   };
 
   const handleAddCategoriya = async (e) => {
     e.preventDefault();
     try {
       const formData = new FormData();
-      formData.append("category_id", category.category_id);
+      formData.append("category_id", Number(category.category_id));
       formData.append("title", category.title);
       formData.append("description", category.description);
-      formData.append("price", category.price);
+      formData.append("price", Number(category.price));
       formData.append("location", category.location);
 
       if (category.image) {
         formData.append("image", category.image);
       }
 
-      const productPost = await post("/products", category);
+      const productPost = await post(`products/${categoryId}`, formData);
+
       if (productPost) {
         alert("Ma'lumotlaringiz qo'shildi");
-      } else {
-        console.log(productPost, "error");
       }
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  console.log(category, "ZO'R Kamoliddin");
+  useEffect(() => {
+    getCategoryName();
+  }, []);
 
   return (
     <div className="fixed flex bg-border-color inset-0 justify-center items-center z-50">
@@ -70,23 +84,18 @@ function AddProductsModal() {
         </button>
 
         {/* Categoriya modal */}
-
         {categoriyModal ? (
           <div className="absolute grid place-items-center bg-[#404040cd] rounded-xl w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <div className="animate-fadeScale w-1/2 min-h-[200px] bg-white border-none p-5 rounded-[12px] flex gap-3 items-start">
-              <button
-                onClick={categoryModalFunction}
-                className="rounded-[12px] px-5 py-1 border-[2px] border-bg-color bg-transparent hover:bg-bg-color duration-300 ease-in"
-              >
-                Uy
-              </button>
-
-              <button
-                onClick={categoryModalFunction}
-                className="rounded-[12px] px-5 py-1 border-[2px] border-bg-color bg-transparent hover:bg-bg-color duration-300 ease-in"
-              >
-                Moshina
-              </button>
+              {categoryName?.map((item, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => categoryModalFunction(item?.id)}
+                  className="rounded-[12px] capitalize px-5 py-1 border-[2px] border-bg-color bg-transparent hover:bg-bg-color duration-300 ease-in"
+                >
+                  {item?.name}
+                </button>
+              ))}
             </div>
           </div>
         ) : (
@@ -94,15 +103,6 @@ function AddProductsModal() {
         )}
 
         <form onSubmit={handleAddCategoriya} className="flex flex-col gap-3.5">
-          <input
-            onChange={productValue}
-            name="category_id"
-            autoComplete="off"
-            type="text"
-            placeholder="ID"
-            className="w-[50px] h-[20px] p-4 text-white outline-none rounded-full border-[2px] border-bg-color bg-transparent"
-          />
-
           <input
             onChange={productValue}
             name="title"
