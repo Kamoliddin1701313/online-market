@@ -1,4 +1,5 @@
 import { get } from "@/lib/api";
+import Image from "next/image";
 
 // React icon kutubxonasi
 import { MdOutlineMonetizationOn } from "react-icons/md";
@@ -6,12 +7,11 @@ import { FaHandshakeSimple, FaRegHeart } from "react-icons/fa6";
 import { SlLocationPin } from "react-icons/sl";
 import { BiSliderAlt, BiCategory, BiSortAlt2 } from "react-icons/bi";
 import { PiShoppingCartBold } from "react-icons/pi";
-import Image from "next/image";
 
 async function Products() {
   const productList = await get("products/");
 
-  console.log(productList, "SSSS");
+  console.log(productList);
 
   return (
     <div className="">

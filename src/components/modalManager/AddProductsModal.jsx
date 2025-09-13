@@ -1,4 +1,6 @@
 "use client";
+
+import { FiUploadCloud } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { addProductsModal } from "@/store/slice/slice";
 import { useEffect, useState } from "react";
@@ -45,17 +47,18 @@ function AddProductsModal() {
     e.preventDefault();
     try {
       const formData = new FormData();
-      formData.append("category_id", Number(category.category_id));
+      // formData.append("category_id", categoryId);
+      formData.append("category", categoryId);
       formData.append("title", category.title);
       formData.append("description", category.description);
-      formData.append("price", Number(category.price));
+      formData.append("price", category.price);
       formData.append("location", category.location);
 
       if (category.image) {
         formData.append("image", category.image);
       }
 
-      const productPost = await post(`products/${categoryId}`, formData);
+      const productPost = await post("products/", formData);
 
       if (productPost) {
         alert("Ma'lumotlaringiz qo'shildi");
@@ -68,6 +71,8 @@ function AddProductsModal() {
   useEffect(() => {
     getCategoryName();
   }, []);
+
+  console.log(categoryName, "categoryName");
 
   return (
     <div className="fixed flex bg-border-color inset-0 justify-center items-center z-50">
@@ -154,7 +159,7 @@ function AddProductsModal() {
                rounded-[16px] border-2 border-dashed border-gray-400 hover:shadow-[0_0_6px_rgba(249,248,248,0.4)] hover:bg-transparent duration-300 ease-in
                cursor-pointer text-gray-500"
             >
-              Fayl
+              <FiUploadCloud className="text-[24px] text-white" />
             </label>
           </div>
 

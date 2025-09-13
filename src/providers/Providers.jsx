@@ -36,10 +36,7 @@ function Providers({ children }) {
                 sidebarMenu ? "w-[6%]" : "w-[21%]"
               }`}
             >
-              <Sidebar
-                sidebarMenu={sidebarMenu}
-                setSidebarMenu={setSidebarMenu}
-              />
+              <Sidebar sidebarMenu={sidebarMenu} />
             </div>
 
             <div
@@ -49,7 +46,7 @@ function Providers({ children }) {
             >
               <button
                 onClick={toggleSidebarMenu}
-                className="bg-bg-color w-[38px] h-[38px] rounded-r-[10px] flex justify-center items-center cursor-pointer"
+                className="bg-white w-[38px] h-[38px] rounded-r-[10px] flex justify-center items-center cursor-pointer"
               >
                 <IoSettingsOutline className="text-[20px]" />
               </button>

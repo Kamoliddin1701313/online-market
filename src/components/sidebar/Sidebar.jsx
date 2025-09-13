@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { FaHome } from "react-icons/fa";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
 import { FaRegHeart } from "react-icons/fa";
@@ -16,29 +17,29 @@ function Sidebar({ sidebarMenu }) {
   const categoriyaData = [
     {
       id: 1,
-      name: "Home",
+      name: "Bosh sahifa",
       link: "/",
       icon: <FaHome style={{ fontSize: "20px" }} />,
     },
 
     {
       id: 2,
-      name: "Categoriya",
-      link: "categoriya",
+      name: "Kategoriyalar",
+      link: "categories",
       icon: <TbAdjustmentsHorizontal style={{ fontSize: "20px" }} />,
     },
 
     {
       id: 3,
-      name: "Sevimli",
-      link: "sevimli",
+      name: "Sevimlilar",
+      link: "favorites",
       icon: <FaRegHeart style={{ fontSize: "20px" }} />,
     },
 
     {
       id: 4,
       name: "Savatcha",
-      link: "savatcha",
+      link: "cart",
       icon: <PiShoppingCartBold style={{ fontSize: "20px" }} />,
     },
   ];
@@ -46,15 +47,15 @@ function Sidebar({ sidebarMenu }) {
   const sellingData = [
     {
       id: 1,
-      name: "Post ad",
-      link: "/",
+      name: "E’lon joylash",
+      link: "/post-ad",
       icon: <MdPostAdd style={{ fontSize: "20px" }} />,
     },
 
     {
       id: 2,
-      name: "My listing",
-      link: "categoriya",
+      name: "Mening e’lonlarim",
+      link: "/my-listings",
       icon: <TbAdjustmentsHorizontal style={{ fontSize: "20px" }} />,
     },
   ];
@@ -62,15 +63,15 @@ function Sidebar({ sidebarMenu }) {
   const buyingData = [
     {
       id: 1,
-      name: "Requests",
-      link: "/",
+      name: "So‘rovlar",
+      link: "/requests",
       icon: <VscRequestChanges style={{ fontSize: "20px" }} />,
     },
 
     {
       id: 2,
-      name: "Resently Viewed",
-      link: "categoriya",
+      name: "Yaqinda ko‘rilganlar",
+      link: "/recently-viewed",
       icon: <FaRegClock style={{ fontSize: "20px" }} />,
     },
   ];
@@ -84,10 +85,10 @@ function Sidebar({ sidebarMenu }) {
       <div className={`flex w-full flex-col bg-white`}>
         <span
           className={`${
-            !sidebarMenu ? "px-4" : "px-2 text-center"
+            !sidebarMenu ? "px-4" : "px-[6px] text-center text-[14px]"
           } my-3 text-bg-color font-semibold duration-300 ease-in`}
         >
-          Browse
+          Tanlash
         </span>
 
         {categoriyaData &&
@@ -106,7 +107,7 @@ function Sidebar({ sidebarMenu }) {
                 <span>{value?.icon}</span>
 
                 {!sidebarMenu ? (
-                  <span className="text-[18px] transition-all duration-300 ease-in-out">
+                  <span className="text-[16px] transition-all duration-300 ease-in-out">
                     {value.name}
                   </span>
                 ) : (
@@ -118,10 +119,10 @@ function Sidebar({ sidebarMenu }) {
 
         <span
           className={`${
-            !sidebarMenu ? "px-4" : "px-2 text-center"
+            !sidebarMenu ? "px-4" : "px-[6px] text-center text-[14px]"
           } my-3 text-bg-color font-semibold duration-300 ease-in`}
         >
-          Selling
+          Sotish
         </span>
 
         {sellingData &&
@@ -139,7 +140,7 @@ function Sidebar({ sidebarMenu }) {
               >
                 <span>{value?.icon}</span>
                 {!sidebarMenu ? (
-                  <span className="text-[18px] transition-all duration-300 ease-in-out">
+                  <span className="text-[16px] transition-all duration-300 ease-in-out">
                     {value.name}
                   </span>
                 ) : (
@@ -151,10 +152,10 @@ function Sidebar({ sidebarMenu }) {
 
         <span
           className={`${
-            !sidebarMenu ? "px-4" : "px-2 text-center"
+            !sidebarMenu ? "px-4" : "px-[6px] text-center text-[14px]"
           } my-3 text-bg-color font-semibold`}
         >
-          Buying
+          Sotib olish
         </span>
 
         {buyingData &&
@@ -173,7 +174,7 @@ function Sidebar({ sidebarMenu }) {
                 <span>{value?.icon}</span>
 
                 {!sidebarMenu ? (
-                  <span className="text-[18px] transition-all duration-300 ease-in-out">
+                  <span className="text-[16px] transition-all duration-300 ease-in-out">
                     {value.name}
                   </span>
                 ) : (
@@ -187,4 +188,4 @@ function Sidebar({ sidebarMenu }) {
   );
 }
 
-export default Sidebar;
+export default React.memo(Sidebar);
