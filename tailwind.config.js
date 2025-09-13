@@ -19,6 +19,7 @@ module.exports = {
         "border-color": "#adadad",
         "bg-color": "#789597ff",
         "body-color": "#e9e9e9",
+        "bg-categoryModalColor":"#F6F9FA"
       },
 
       keyframes: {

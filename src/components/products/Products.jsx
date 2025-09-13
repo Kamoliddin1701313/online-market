@@ -11,7 +11,7 @@ import { PiShoppingCartBold } from "react-icons/pi";
 async function Products() {
   const productList = await get("products/");
 
-  console.log(productList);
+  console.log(productList, "TTTT");
 
   return (
     <div className="">
@@ -54,13 +54,12 @@ async function Products() {
       <div className="grid grid-cols-4 gap-3.5 mt-5 animate-fadeInUp">
         {productList?.map((item, index) => (
           <div key={index} className="bg-white rounded-[12px] overflow-hidden">
-            <div className="relative">
+            <div className="relative w-full h-[200px]">
               <Image
                 src={item.image || "/no-image.png"}
                 alt={item?.title}
-                width={200}
-                height={200}
-                className="w-full h-[200px] object-cover"
+                fill
+                className="object-cover"
               />
 
               <div className="absolute top-2.5 right-2.5 flex items-center gap-2.5">

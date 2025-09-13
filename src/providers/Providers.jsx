@@ -25,41 +25,46 @@ function Providers({ children }) {
           style={{ minHeight: "calc(100vh - 70px - 60px)" }}
         >
           {/* Sidebar */}
-
-          <div
-            className={`relative mt-[70px] duration-300 ease-in ${
-              sidebarMenu ? "w-[6%]" : "w-1/4"
-            }`}
-          >
-            <div
-              className={`fixed z-10 max-h-[75vh] overflow-auto duration-300 ease-in ${
-                sidebarMenu ? "w-[6%]" : "w-[21%]"
-              }`}
-            >
-              <Sidebar sidebarMenu={sidebarMenu} />
-            </div>
-
+          {/* salomat */}
+          <div className="relative mt-[70px]">
             <div
               className={`${
-                sidebarMenu ? "left-[14%]" : "left-[29%]"
-              } fixed z-10 duration-300 ease-in`}
+                sidebarMenu ? "w-[100px]" : "w-[290px]"
+              } fixed z-10 max-h-[70vh] transition-all duration-300 ease-in`}
             >
+              <Sidebar sidebarMenu={sidebarMenu} />
+              {/* <h1 className="bg-green-900 w-full">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repudiandae similique minima, ipsam nulla adipisci quisquam
+                magni aliquam quos odit. Ex dolore iste sunt exercitationem
+                temporibus officia rem sapiente impedit vel quibusdam deleniti
+                maxime, voluptatem accusantium provident ratione corporis nobis
+                soluta aperiam ea. Veniam vitae officia nulla ad ab doloribus,
+                voluptates ipsam reprehenderit ullam, fuga dolore iusto facere
+                possimus tempora tenetur nemo excepturi asperiores explicabo
+                quidem neque quos numquam et. Cumque, animi quia accusantium ab
+                esse dolore cum voluptates, molestiae qui vel ut corrupti, sint
+                repellendus ducimus voluptatibus magnam commodi aperiam deserunt
+                eum deleniti itaque adipisci saepe! Rerum ipsam magni
+                perspiciatis.
+              </h1> */}
+
               <button
                 onClick={toggleSidebarMenu}
-                className="bg-white w-[38px] h-[38px] rounded-r-[10px] flex justify-center items-center cursor-pointer"
+                className="group transition-all duration-300 ease-in absolute flex justify-center items-center top-0 -right-[36px] bg-white w-[36px] h-[36px] rounded-r-[10px] hover:bg-bg-color"
               >
-                <IoSettingsOutline className="text-[20px]" />
+                <IoSettingsOutline className="text-[20px] group-hover:text-white transition-all duration-300 ease-in" />
               </button>
             </div>
-          </div>
 
-          {/* Main content */}
-          <div
-            className={`h-full overflow-auto mt-[70px] duration-300 ease-in ${
-              sidebarMenu ? "w-[94%] ml-[2%]" : "w-3/4"
-            }`}
-          >
-            {children}
+            {/* Main content */}
+            <div
+              className={`${
+                sidebarMenu ? "ml-[100px]" : "ml-[290px]"
+              } transition-all duration-300 ease-in`}
+            >
+              {children}
+            </div>
           </div>
         </div>
 

@@ -25,21 +25,21 @@ function Sidebar({ sidebarMenu }) {
     {
       id: 2,
       name: "Kategoriyalar",
-      link: "categories",
+      link: "/categories",
       icon: <TbAdjustmentsHorizontal style={{ fontSize: "20px" }} />,
     },
 
     {
       id: 3,
       name: "Sevimlilar",
-      link: "favorites",
+      link: "/favorites",
       icon: <FaRegHeart style={{ fontSize: "20px" }} />,
     },
 
     {
       id: 4,
       name: "Savatcha",
-      link: "cart",
+      link: "/cart",
       icon: <PiShoppingCartBold style={{ fontSize: "20px" }} />,
     },
   ];
@@ -77,113 +77,115 @@ function Sidebar({ sidebarMenu }) {
   ];
 
   const categoriesDetail = (services) => {
-    route.push(`/${services}`);
+    route.push(`${services}`);
   };
 
   return (
-    <div className="">
-      <div className={`flex w-full flex-col bg-white`}>
-        <span
-          className={`${
-            !sidebarMenu ? "px-4" : "px-[6px] text-center text-[14px]"
-          } my-3 text-bg-color font-semibold duration-300 ease-in`}
-        >
-          Tanlash
-        </span>
+    <div className={`flex w-full flex-col bg-white`}>
+      <span
+        className={`${
+          !sidebarMenu ? "px-4" : "px-[6px] text-center text-[14px]"
+        } my-3 text-bg-color font-semibold duration-300 ease-in`}
+      >
+        Tanlash
+      </span>
 
-        {categoriyaData &&
-          categoriyaData?.map((value, index) => {
-            const isActiveLink = pathname === `/${value?.link}`;
+      {categoriyaData &&
+        categoriyaData?.map((value, index) => {
+          const isActiveLink = pathname === `/${value?.link}`;
 
-            return (
-              <button
-                onClick={() => categoriesDetail(value.link)}
-                key={index}
-                className={`${
-                  !sidebarMenu ? "px-4" : "px-2 justify-center"
-                } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff]
+          return (
+            <button
+              onClick={() => categoriesDetail(value.link)}
+              key={index}
+              className={`${
+                !sidebarMenu ? "px-4" : "px-2 justify-center"
+              } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff]
                   ${isActiveLink ? "bg-[#789597ff]" : ""}`}
-              >
-                <span>{value?.icon}</span>
+            >
+              <span>{value?.icon}</span>
 
-                {!sidebarMenu ? (
-                  <span className="text-[16px] transition-all duration-300 ease-in-out">
-                    {value.name}
-                  </span>
-                ) : (
-                  ""
-                )}
-              </button>
-            );
-          })}
+              {!sidebarMenu ? (
+                <span
+                  className={`text-[16px] transition-all duration-300 ease-in-out 
+    ${!sidebarMenu ? "opacity-100 delay-700" : "opacity-0 hidden"}
+  `}
+                >
+                  {value.name}
+                </span>
+              ) : (
+                ""
+              )}
+            </button>
+          );
+        })}
 
-        <span
-          className={`${
-            !sidebarMenu ? "px-4" : "px-[6px] text-center text-[14px]"
-          } my-3 text-bg-color font-semibold duration-300 ease-in`}
-        >
-          Sotish
-        </span>
+      <span
+        className={`${
+          !sidebarMenu ? "px-4" : "px-[6px] text-center text-[14px]"
+        } my-3 text-bg-color font-semibold duration-300 ease-in`}
+      >
+        Sotish
+      </span>
 
-        {sellingData &&
-          sellingData?.map((value, index) => {
-            const isActiveLink = pathname === `/${value?.link}`;
+      {sellingData &&
+        sellingData?.map((value, index) => {
+          const isActiveLink = pathname === `/${value?.link}`;
 
-            return (
-              <button
-                onClick={() => categoriesDetail(value.link)}
-                key={index}
-                className={`${
-                  !sidebarMenu ? "px-4" : "px-2 justify-center"
-                } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff] 
+          return (
+            <button
+              onClick={() => categoriesDetail(value.link)}
+              key={index}
+              className={`${
+                !sidebarMenu ? "px-4" : "px-2 justify-center"
+              } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff] 
                   ${isActiveLink ? "bg-[#789597ff]" : ""}`}
-              >
-                <span>{value?.icon}</span>
-                {!sidebarMenu ? (
-                  <span className="text-[16px] transition-all duration-300 ease-in-out">
-                    {value.name}
-                  </span>
-                ) : (
-                  ""
-                )}
-              </button>
-            );
-          })}
+            >
+              <span>{value?.icon}</span>
+              {!sidebarMenu ? (
+                <span className="text-[16px] transition-all duration-300 ease-in-out">
+                  {value.name}
+                </span>
+              ) : (
+                ""
+              )}
+            </button>
+          );
+        })}
 
-        <span
-          className={`${
-            !sidebarMenu ? "px-4" : "px-[6px] text-center text-[14px]"
-          } my-3 text-bg-color font-semibold`}
-        >
-          Sotib olish
-        </span>
+      <span
+        className={`${
+          !sidebarMenu ? "px-4" : "px-[6px] text-center text-[14px]"
+        } my-3 text-bg-color font-semibold`}
+      >
+        Sotib olish
+      </span>
 
-        {buyingData &&
-          buyingData?.map((value, index) => {
-            const isActiveLink = pathname === `/${value?.link}`;
+      {buyingData &&
+        buyingData?.map((value, index) => {
+          const isActiveLink = pathname === `/${value?.link}`;
 
-            return (
-              <button
-                onClick={() => categoriesDetail(value.link)}
-                key={index}
-                className={`${
-                  !sidebarMenu ? "px-4" : "px-2 justify-center"
-                } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff] 
+          return (
+            <button
+              onClick={() => categoriesDetail(value.link)}
+              key={index}
+              className={`${
+                !sidebarMenu ? "px-4" : "px-2 justify-center"
+              } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff] 
                   ${isActiveLink ? "bg-[#789597ff]" : ""}`}
-              >
-                <span>{value?.icon}</span>
+            >
+              <span>{value?.icon}</span>
 
-                {!sidebarMenu ? (
-                  <span className="text-[16px] transition-all duration-300 ease-in-out">
-                    {value.name}
-                  </span>
-                ) : (
-                  ""
-                )}
-              </button>
-            );
-          })}
-      </div>
+              {!sidebarMenu ? (
+                <span className="text-[16px] transition-all duration-300 ease-in-out">
+                  {value.name}
+                </span>
+              ) : (
+                ""
+              )}
+            </button>
+          );
+        })}
     </div>
   );
 }
