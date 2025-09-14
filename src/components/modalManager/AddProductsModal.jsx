@@ -9,13 +9,8 @@ import { get, post } from "@/lib/api";
 function AddProductsModal() {
   const [categoryName, setCategoryName] = useState([]);
   const [categoryId, setCategoryId] = useState(null);
-
-  const getCategoryName = async () => {
-    const data = await get("categories/");
-    setCategoryName(data);
-  };
-
   const dispatch = useDispatch();
+
   const [categoriyModal, setCategoriyModal] = useState(false);
   const [category, setCategory] = useState({
     category_id: "",
@@ -25,6 +20,11 @@ function AddProductsModal() {
     image: "",
     location: "",
   });
+
+  const getCategoryName = async () => {
+    const data = await get("categories/");
+    setCategoryName(data);
+  };
 
   const backButton = () => {
     dispatch(addProductsModal());
@@ -61,6 +61,7 @@ function AddProductsModal() {
 
       if (productPost) {
         alert("Ma'lumotlaringiz qo'shildi");
+
         dispatch(addProductsModal());
       }
     } catch (error) {

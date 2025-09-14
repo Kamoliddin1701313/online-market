@@ -75,7 +75,7 @@ async function Products() {
 
             <div className="px-4 py-2">
               <button className="bg-bg-color cursor-pointer my-2.5 rounded-2xl py-1.5 px-3.5">
-                Qo'shish
+                Buy
               </button>
 
               <h4 className="line-clamp-2 leading-5">{item?.title}</h4>
