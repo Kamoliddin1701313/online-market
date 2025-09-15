@@ -26,7 +26,7 @@ function Providers({ children }) {
         >
           {/* Sidebar */}
           {/* salomat */}
-          <div className="relative mt-[70px]">
+          <div className="relative mt-[70px] w-full">
             <div
               className={`${
                 sidebarMenu ? "w-[100px]" : "w-[290px]"

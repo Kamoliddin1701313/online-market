@@ -1,6 +1,7 @@
 "use client";
 
 import { FiUploadCloud } from "react-icons/fi";
+import { FaCheck } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addProductsModal } from "@/store/slice/slice";
 import { useEffect, useState } from "react";
@@ -9,6 +10,7 @@ import { get, post } from "@/lib/api";
 function AddProductsModal() {
   const [categoryName, setCategoryName] = useState([]);
   const [categoryId, setCategoryId] = useState(null);
+  const [isActive, setIsActive] = useState(false);
   const dispatch = useDispatch();
 
   const [categoriyModal, setCategoriyModal] = useState(false);
@@ -19,6 +21,7 @@ function AddProductsModal() {
     price: "",
     image: "",
     location: "",
+    is_active: "",
   });
 
   const getCategoryName = async () => {
@@ -35,8 +38,19 @@ function AddProductsModal() {
     setCategoriyModal((p) => !p);
   };
 
+  // const productValue = (e) => {
+  //   if (e.target.name === "image") {
+  //     setCategory({ ...category, image: e.target.files[0] });
+  //   } else {
+  //     setCategory({ ...category, [e.target.name]: e.target.value });
+  //   }
+  // };
+
   const productValue = (e) => {
-    if (e.target.name === "image") {
+    if (e.target.type === "checkbox") {
+      setIsActive(e.target.checked);
+      setCategory({ ...category, [e.target.name]: e.target.checked });
+    } else if (e.target.name === "image") {
       setCategory({ ...category, image: e.target.files[0] });
     } else {
       setCategory({ ...category, [e.target.name]: e.target.value });
@@ -45,6 +59,7 @@ function AddProductsModal() {
 
   const handleAddCategoriya = async (e) => {
     e.preventDefault();
+
     try {
       const formData = new FormData();
       formData.append("category_id", categoryId);
@@ -52,6 +67,7 @@ function AddProductsModal() {
       formData.append("description", category.description);
       formData.append("price", category.price);
       formData.append("location", category.location);
+      formData.append("is_active", category.is_active);
 
       if (category.image) {
         formData.append("image", category.image);
@@ -62,7 +78,12 @@ function AddProductsModal() {
       if (productPost) {
         alert("Ma'lumotlaringiz qo'shildi");
 
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(new Event("products-updated"));
+        }
+
         dispatch(addProductsModal());
+        // router.refresh();
       }
     } catch (error) {
       console.log(error.message);
@@ -72,6 +93,8 @@ function AddProductsModal() {
   useEffect(() => {
     getCategoryName();
   }, []);
+
+  console.log(isActive, "isActive");
 
   return (
     <div className="fixed flex bg-bg-categoryModalColor inset-0 justify-center items-center z-50">
@@ -141,6 +164,27 @@ function AddProductsModal() {
               type="text"
               placeholder="Manzili ..."
               multiple
+            />
+          </div>
+
+          <div className="">
+            <label
+              htmlFor="active"
+              className="border-[1.5px] w-[26px] h-[26px] cursor-pointer flex justify-center items-center rounded-[8px] bg-transparent border-bg-color"
+            >
+              {isActive ? (
+                <FaCheck className="text-blue-700 text-[12px]" />
+              ) : (
+                ""
+              )}
+            </label>
+
+            <input
+              type="checkbox"
+              name="is_active"
+              id="active"
+              onChange={productValue}
+              className="hidden"
             />
           </div>
 

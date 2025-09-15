@@ -14,6 +14,7 @@ module.exports = {
       md: { max: "760px" },
       sm: { max: "500px" },
     },
+    
     extend: {
       colors: {
         "border-color": "#adadad",
