@@ -5,7 +5,6 @@ import google_icon from "../../../../public/icons/google_icon.svg";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { post } from "../../../lib/api";
-import Link from "next/link";
 import Loading from "@/components/loading/Loading";
 
 function Register() {
@@ -60,8 +59,6 @@ function Register() {
     } catch (err) {
       console.error("Xatolik:", err.message);
     }
-
-    console.log(login, "loginloginloginlogin");
   };
 
   return (

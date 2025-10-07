@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { FaHome } from "react-icons/fa";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
 import { FaRegHeart } from "react-icons/fa";
@@ -9,76 +9,81 @@ import { usePathname, useRouter } from "next/navigation";
 import { MdPostAdd } from "react-icons/md";
 import { VscRequestChanges } from "react-icons/vsc";
 import { FaRegClock } from "react-icons/fa";
+import Link from "next/link";
 
 function Sidebar({ sidebarMenu }) {
-  const route = useRouter();
   const pathname = usePathname();
 
-  const categoriyaData = [
-    {
-      id: 1,
-      name: "Bosh sahifa",
-      link: "/",
-      icon: <FaHome style={{ fontSize: "20px" }} />,
-    },
+  const categoriyaData = useMemo(
+    () => [
+      {
+        id: 1,
+        name: "Bosh sahifa",
+        link: "/",
+        icon: <FaHome style={{ fontSize: "20px" }} />,
+      },
 
-    {
-      id: 2,
-      name: "Kategoriyalar",
-      link: "/categories",
-      icon: <TbAdjustmentsHorizontal style={{ fontSize: "20px" }} />,
-    },
+      {
+        id: 2,
+        name: "Kategoriyalar",
+        link: "/categories",
+        icon: <TbAdjustmentsHorizontal style={{ fontSize: "20px" }} />,
+      },
 
-    {
-      id: 3,
-      name: "Sevimlilar",
-      link: "/favorites",
-      icon: <FaRegHeart style={{ fontSize: "20px" }} />,
-    },
+      {
+        id: 3,
+        name: "Sevimlilar",
+        link: "/favorites",
+        icon: <FaRegHeart style={{ fontSize: "20px" }} />,
+      },
 
-    {
-      id: 4,
-      name: "Savatcha",
-      link: "/cart",
-      icon: <PiShoppingCartBold style={{ fontSize: "20px" }} />,
-    },
-  ];
+      {
+        id: 4,
+        name: "Savatcha",
+        link: "/cart",
+        icon: <PiShoppingCartBold style={{ fontSize: "20px" }} />,
+      },
+    ],
+    []
+  );
 
-  const sellingData = [
-    {
-      id: 1,
-      name: "E’lon joylash",
-      link: "/post-ad",
-      icon: <MdPostAdd style={{ fontSize: "20px" }} />,
-    },
+  const sellingData = useMemo(
+    () => [
+      {
+        id: 1,
+        name: "E’lon joylash",
+        link: "/post-ad",
+        icon: <MdPostAdd style={{ fontSize: "20px" }} />,
+      },
 
-    {
-      id: 2,
-      name: "Mening e’lonlarim",
-      link: "/my-listings",
-      icon: <TbAdjustmentsHorizontal style={{ fontSize: "20px" }} />,
-    },
-  ];
+      {
+        id: 2,
+        name: "Mening e’lonlarim",
+        link: "/my-listings",
+        icon: <TbAdjustmentsHorizontal style={{ fontSize: "20px" }} />,
+      },
+    ],
+    []
+  );
 
-  const buyingData = [
-    {
-      id: 1,
-      name: "So‘rovlar",
-      link: "/requests",
-      icon: <VscRequestChanges style={{ fontSize: "20px" }} />,
-    },
+  const buyingData = useMemo(
+    () => [
+      {
+        id: 1,
+        name: "So‘rovlar",
+        link: "/requests",
+        icon: <VscRequestChanges style={{ fontSize: "20px" }} />,
+      },
 
-    {
-      id: 2,
-      name: "Yaqinda ko‘rilganlar",
-      link: "/recently-viewed",
-      icon: <FaRegClock style={{ fontSize: "20px" }} />,
-    },
-  ];
-
-  const categoriesDetail = (services) => {
-    route.push(`${services}`);
-  };
+      {
+        id: 2,
+        name: "Yaqinda ko‘rilganlar",
+        link: "/recently-viewed",
+        icon: <FaRegClock style={{ fontSize: "20px" }} />,
+      },
+    ],
+    []
+  );
 
   return (
     <div className={`flex w-full flex-col bg-white`}>
@@ -91,13 +96,13 @@ function Sidebar({ sidebarMenu }) {
       </span>
 
       {categoriyaData &&
-        categoriyaData?.map((value, index) => {
+        categoriyaData?.map((value) => {
           const isActiveLink = pathname === `/${value?.link}`;
 
           return (
-            <button
-              onClick={() => categoriesDetail(value.link)}
-              key={index}
+            <Link
+              href={`${value.link}`}
+              key={value?.id}
               className={`${
                 !sidebarMenu ? "px-4" : "px-2 justify-center"
               } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff]
@@ -116,7 +121,7 @@ function Sidebar({ sidebarMenu }) {
               ) : (
                 ""
               )}
-            </button>
+            </Link>
           );
         })}
 
@@ -129,13 +134,13 @@ function Sidebar({ sidebarMenu }) {
       </span>
 
       {sellingData &&
-        sellingData?.map((value, index) => {
+        sellingData?.map((value) => {
           const isActiveLink = pathname === `/${value?.link}`;
 
           return (
-            <button
-              onClick={() => categoriesDetail(value.link)}
-              key={index}
+            <Link
+              href={`${value.link}`}
+              key={value?.id}
               className={`${
                 !sidebarMenu ? "px-4" : "px-2 justify-center"
               } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff] 
@@ -149,7 +154,7 @@ function Sidebar({ sidebarMenu }) {
               ) : (
                 ""
               )}
-            </button>
+            </Link>
           );
         })}
 
@@ -162,13 +167,13 @@ function Sidebar({ sidebarMenu }) {
       </span>
 
       {buyingData &&
-        buyingData?.map((value, index) => {
+        buyingData?.map((value) => {
           const isActiveLink = pathname === `/${value?.link}`;
 
           return (
-            <button
-              onClick={() => categoriesDetail(value.link)}
-              key={index}
+            <Link
+              href={`${value.link}`}
+              key={value?.id}
               className={`${
                 !sidebarMenu ? "px-4" : "px-2 justify-center"
               } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff] 
@@ -183,7 +188,7 @@ function Sidebar({ sidebarMenu }) {
               ) : (
                 ""
               )}
-            </button>
+            </Link>
           );
         })}
     </div>

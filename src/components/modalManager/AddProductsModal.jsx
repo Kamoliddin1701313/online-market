@@ -94,8 +94,6 @@ function AddProductsModal() {
     getCategoryName();
   }, []);
 
-  console.log(isActive, "isActive");
-
   return (
     <div className="fixed flex bg-bg-categoryModalColor inset-0 justify-center items-center z-50">
       <div className="animate-fadeInDown relative w-3/5 mx-auto rounded-xl p-6 bg-white">

@@ -33,21 +33,6 @@ function Providers({ children }) {
               } fixed z-10 max-h-[70vh] transition-all duration-300 ease-in`}
             >
               <Sidebar sidebarMenu={sidebarMenu} />
-              {/* <h1 className="bg-green-900 w-full">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repudiandae similique minima, ipsam nulla adipisci quisquam
-                magni aliquam quos odit. Ex dolore iste sunt exercitationem
-                temporibus officia rem sapiente impedit vel quibusdam deleniti
-                maxime, voluptatem accusantium provident ratione corporis nobis
-                soluta aperiam ea. Veniam vitae officia nulla ad ab doloribus,
-                voluptates ipsam reprehenderit ullam, fuga dolore iusto facere
-                possimus tempora tenetur nemo excepturi asperiores explicabo
-                quidem neque quos numquam et. Cumque, animi quia accusantium ab
-                esse dolore cum voluptates, molestiae qui vel ut corrupti, sint
-                repellendus ducimus voluptatibus magnam commodi aperiam deserunt
-                eum deleniti itaque adipisci saepe! Rerum ipsam magni
-                perspiciatis.
-              </h1> */}
 
               <button
                 onClick={toggleSidebarMenu}
@@ -61,7 +46,7 @@ function Providers({ children }) {
             <div
               className={`${
                 sidebarMenu ? "ml-[100px]" : "ml-[290px]"
-              } transition-all duration-300 ease-in`}
+              } transition-all duration-300 ease-in min-h-screen`}
             >
               {children}
             </div>
