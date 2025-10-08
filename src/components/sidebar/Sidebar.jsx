@@ -19,28 +19,28 @@ function Sidebar({ sidebarMenu }) {
       {
         id: 1,
         name: "Bosh sahifa",
-        link: "/",
+        path: "/",
         icon: <FaHome style={{ fontSize: "20px" }} />,
       },
 
       {
         id: 2,
         name: "Kategoriyalar",
-        link: "/categories",
+        path: "/categories",
         icon: <TbAdjustmentsHorizontal style={{ fontSize: "20px" }} />,
       },
 
       {
         id: 3,
         name: "Sevimlilar",
-        link: "/favorites",
+        path: "/favorites",
         icon: <FaRegHeart style={{ fontSize: "20px" }} />,
       },
 
       {
         id: 4,
         name: "Savatcha",
-        link: "/cart",
+        path: "/cart",
         icon: <PiShoppingCartBold style={{ fontSize: "20px" }} />,
       },
     ],
@@ -52,14 +52,14 @@ function Sidebar({ sidebarMenu }) {
       {
         id: 1,
         name: "E’lon joylash",
-        link: "/post-ad",
+        path: "/post-ad",
         icon: <MdPostAdd style={{ fontSize: "20px" }} />,
       },
 
       {
         id: 2,
         name: "Mening e’lonlarim",
-        link: "/my-listings",
+        path: "/my-listings",
         icon: <TbAdjustmentsHorizontal style={{ fontSize: "20px" }} />,
       },
     ],
@@ -71,14 +71,14 @@ function Sidebar({ sidebarMenu }) {
       {
         id: 1,
         name: "So‘rovlar",
-        link: "/requests",
+        path: "/requests",
         icon: <VscRequestChanges style={{ fontSize: "20px" }} />,
       },
 
       {
         id: 2,
         name: "Yaqinda ko‘rilganlar",
-        link: "/recently-viewed",
+        path: "/recently-viewed",
         icon: <FaRegClock style={{ fontSize: "20px" }} />,
       },
     ],
@@ -97,16 +97,14 @@ function Sidebar({ sidebarMenu }) {
 
       {categoriyaData &&
         categoriyaData?.map((value) => {
-          const isActiveLink = pathname === `/${value?.link}`;
-
           return (
             <Link
-              href={`${value.link}`}
+              href={`${value.path}`}
               key={value?.id}
               className={`${
                 !sidebarMenu ? "px-4" : "px-2 justify-center"
               } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff]
-                  ${isActiveLink ? "bg-[#789597ff]" : ""}`}
+                  ${pathname === value.path ? "bg-[#789597ff]" : ""}`}
             >
               <span>{value?.icon}</span>
 
@@ -135,16 +133,14 @@ function Sidebar({ sidebarMenu }) {
 
       {sellingData &&
         sellingData?.map((value) => {
-          const isActiveLink = pathname === `/${value?.link}`;
-
           return (
             <Link
-              href={`${value.link}`}
+              href={`${value.path}`}
               key={value?.id}
               className={`${
                 !sidebarMenu ? "px-4" : "px-2 justify-center"
               } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff] 
-                  ${isActiveLink ? "bg-[#789597ff]" : ""}`}
+                  ${pathname === value.path ? "bg-[#789597ff]" : ""}`}
             >
               <span>{value?.icon}</span>
               {!sidebarMenu ? (
@@ -168,16 +164,14 @@ function Sidebar({ sidebarMenu }) {
 
       {buyingData &&
         buyingData?.map((value) => {
-          const isActiveLink = pathname === `/${value?.link}`;
-
           return (
             <Link
-              href={`${value.link}`}
+              href={`${value.path}`}
               key={value?.id}
               className={`${
                 !sidebarMenu ? "px-4" : "px-2 justify-center"
               } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff] 
-                  ${isActiveLink ? "bg-[#789597ff]" : ""}`}
+                  ${pathname === value.path ? "bg-[#789597ff]" : ""}`}
             >
               <span>{value?.icon}</span>
 
