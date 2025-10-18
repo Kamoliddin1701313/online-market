@@ -44,15 +44,17 @@ function ProductsList({ productList }) {
             </div>
           </div>
 
-          <div className="px-4 py-2">
-            <button className="bg-bg-color cursor-pointer text-white my-2.5 rounded-2xl py-1.5 px-5 text-center">
+          <div className="px-4 py-[6px]">
+            <button className="bg-bg-color cursor-pointer text-white my-2.5 rounded-2xl py-1.5 w-full text-center">
               Buy
             </button>
 
             <h4 className="line-clamp-2 leading-5">{item?.title}</h4>
 
             <div className="flex items-center justify-between my-2.5 gap-[15px]">
-              <span className="min-w-[50px]">{item?.price}</span>
+              <span className="min-w-[50px]">
+                {parseFloat(item?.price).toFixed(0)}
+              </span>
               <span className="line-clamp-1">{item?.location}</span>
             </div>
           </div>

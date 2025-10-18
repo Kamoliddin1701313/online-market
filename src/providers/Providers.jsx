@@ -46,7 +46,7 @@ function Providers({ children }) {
             <div
               className={`${
                 sidebarMenu ? "ml-[100px]" : "ml-[290px]"
-              } transition-all duration-300 ease-in min-h-screen`}
+              } transition-all duration-300 ease-in min-h-screen py-10 pl-5`}
             >
               {children}
             </div>

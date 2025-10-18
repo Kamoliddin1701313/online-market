@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React from "react";
 import { FaHome } from "react-icons/fa";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
 import { FaRegHeart } from "react-icons/fa";
 import { PiShoppingCartBold } from "react-icons/pi";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { MdPostAdd } from "react-icons/md";
 import { VscRequestChanges } from "react-icons/vsc";
 import { FaRegClock } from "react-icons/fa";
@@ -14,76 +14,67 @@ import Link from "next/link";
 function Sidebar({ sidebarMenu }) {
   const pathname = usePathname();
 
-  const categoriyaData = useMemo(
-    () => [
-      {
-        id: 1,
-        name: "Bosh sahifa",
-        path: "/",
-        icon: <FaHome style={{ fontSize: "20px" }} />,
-      },
+  const categoriyaData = [
+    {
+      id: 1,
+      name: "Bosh sahifa",
+      path: "/",
+      icon: <FaHome style={{ fontSize: "20px" }} />,
+    },
 
-      {
-        id: 2,
-        name: "Kategoriyalar",
-        path: "/categories",
-        icon: <TbAdjustmentsHorizontal style={{ fontSize: "20px" }} />,
-      },
+    {
+      id: 2,
+      name: "Kategoriyalar",
+      path: "/categories",
+      icon: <TbAdjustmentsHorizontal style={{ fontSize: "20px" }} />,
+    },
 
-      {
-        id: 3,
-        name: "Sevimlilar",
-        path: "/favorites",
-        icon: <FaRegHeart style={{ fontSize: "20px" }} />,
-      },
+    {
+      id: 3,
+      name: "Sevimlilar",
+      path: "/favorites",
+      icon: <FaRegHeart style={{ fontSize: "20px" }} />,
+    },
 
-      {
-        id: 4,
-        name: "Savatcha",
-        path: "/cart",
-        icon: <PiShoppingCartBold style={{ fontSize: "20px" }} />,
-      },
-    ],
-    []
-  );
+    {
+      id: 4,
+      name: "Savatcha",
+      path: "/cart",
+      icon: <PiShoppingCartBold style={{ fontSize: "20px" }} />,
+    },
+  ];
 
-  const sellingData = useMemo(
-    () => [
-      {
-        id: 1,
-        name: "E’lon joylash",
-        path: "/post-ad",
-        icon: <MdPostAdd style={{ fontSize: "20px" }} />,
-      },
+  const sellingData = [
+    {
+      id: 1,
+      name: "E’lon joylash",
+      path: "/post-ad",
+      icon: <MdPostAdd style={{ fontSize: "20px" }} />,
+    },
 
-      {
-        id: 2,
-        name: "Mening e’lonlarim",
-        path: "/my-listings",
-        icon: <TbAdjustmentsHorizontal style={{ fontSize: "20px" }} />,
-      },
-    ],
-    []
-  );
+    {
+      id: 2,
+      name: "Mening e’lonlarim",
+      path: "/my-listings",
+      icon: <TbAdjustmentsHorizontal style={{ fontSize: "20px" }} />,
+    },
+  ];
 
-  const buyingData = useMemo(
-    () => [
-      {
-        id: 1,
-        name: "So‘rovlar",
-        path: "/requests",
-        icon: <VscRequestChanges style={{ fontSize: "20px" }} />,
-      },
+  const buyingData = [
+    {
+      id: 1,
+      name: "So‘rovlar",
+      path: "/requests",
+      icon: <VscRequestChanges style={{ fontSize: "20px" }} />,
+    },
 
-      {
-        id: 2,
-        name: "Yaqinda ko‘rilganlar",
-        path: "/recently-viewed",
-        icon: <FaRegClock style={{ fontSize: "20px" }} />,
-      },
-    ],
-    []
-  );
+    {
+      id: 2,
+      name: "Yaqinda ko‘rilganlar",
+      path: "/recently-viewed",
+      icon: <FaRegClock style={{ fontSize: "20px" }} />,
+    },
+  ];
 
   return (
     <div className={`flex w-full flex-col bg-white`}>
@@ -99,6 +90,7 @@ function Sidebar({ sidebarMenu }) {
         categoriyaData?.map((value) => {
           return (
             <Link
+              prefetch={false}
               href={`${value.path}`}
               key={value?.id}
               className={`${
@@ -135,6 +127,7 @@ function Sidebar({ sidebarMenu }) {
         sellingData?.map((value) => {
           return (
             <Link
+              prefetch={false}
               href={`${value.path}`}
               key={value?.id}
               className={`${
@@ -166,6 +159,7 @@ function Sidebar({ sidebarMenu }) {
         buyingData?.map((value) => {
           return (
             <Link
+              prefetch={false}
               href={`${value.path}`}
               key={value?.id}
               className={`${

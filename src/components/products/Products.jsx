@@ -82,6 +82,7 @@ function Products() {
 
   const fetchProducts = async () => {
     const data = await get("products/");
+
     setProductList(data);
   };
 
@@ -92,8 +93,6 @@ function Products() {
 
     return () => window.removeEventListener("products-updated", handleUpdate);
   }, []);
-
-  
 
   return (
     <div className="flex flex-col">

@@ -9,11 +9,12 @@ import { get, post } from "@/lib/api";
 
 function AddProductsModal() {
   const [categoryName, setCategoryName] = useState([]);
+  const [categoriyaSelect, setCategoriyaSelect] = useState(false);
   const [categoryId, setCategoryId] = useState(null);
   const [isActive, setIsActive] = useState(false);
+  const [categoriyModal, setCategoriyModal] = useState(false);
   const dispatch = useDispatch();
 
-  const [categoriyModal, setCategoriyModal] = useState(false);
   const [category, setCategory] = useState({
     category_id: "",
     title: "",
@@ -22,6 +23,14 @@ function AddProductsModal() {
     image: "",
     location: "",
     is_active: "",
+  });
+
+  const [requiredInputValue, setRequiredInputValue] = useState({
+    selectCategoriya: false,
+    selectName: false,
+    selectDescription: false,
+    selectPrice: false,
+    selectLocation: false,
   });
 
   const getCategoryName = async () => {
@@ -33,8 +42,9 @@ function AddProductsModal() {
     dispatch(addProductsModal());
   };
 
-  const categoryModalFunction = (id) => {
-    setCategoryId(id);
+  const categoryModalFunction = (select) => {
+    setCategoryId(select);
+    setCategoriyaSelect(true);
     setCategoriyModal((p) => !p);
   };
 
@@ -60,9 +70,44 @@ function AddProductsModal() {
   const handleAddCategoriya = async (e) => {
     e.preventDefault();
 
+    if (categoryId == null) {
+      setRequiredInputValue((prev) => ({ ...prev, selectCategoriya: true }));
+      return;
+    } else {
+      setRequiredInputValue((prev) => ({ ...prev, selectCategoriya: false }));
+    }
+
+    if (category.title.trim() === "") {
+      setRequiredInputValue((prev) => ({ ...prev, selectName: true }));
+      return;
+    } else {
+      setRequiredInputValue((prev) => ({ ...prev, selectName: false }));
+    }
+    // gggggggggg
+    if (category.description.trim() === "") {
+      setRequiredInputValue((prev) => ({ ...prev, selectDescription: true }));
+      return;
+    } else {
+      setRequiredInputValue((prev) => ({ ...prev, selectDescription: false }));
+    }
+
+    if (category.price.trim() === "") {
+      setRequiredInputValue((prev) => ({ ...prev, selectPrice: true }));
+      return;
+    } else {
+      setRequiredInputValue((prev) => ({ ...prev, selectPrice: false }));
+    }
+
+    if (category.location.trim() === "") {
+      setRequiredInputValue((prev) => ({ ...prev, selectLocation: true }));
+      return;
+    } else {
+      setRequiredInputValue((prev) => ({ ...prev, selectLocation: false }));
+    }
+
     try {
       const formData = new FormData();
-      formData.append("category_id", categoryId);
+      formData.append("category_id", categoryId.id);
       formData.append("title", category.title);
       formData.append("description", category.description);
       formData.append("price", category.price);
@@ -86,8 +131,10 @@ function AddProductsModal() {
         // router.refresh();
       }
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
+
+    console.log(categoryId);
   };
 
   useEffect(() => {
@@ -101,12 +148,22 @@ function AddProductsModal() {
           Maxsulotlar qo'shish
         </h2>
 
-        <button
-          onClick={() => setCategoriyModal((p) => !p)}
-          className="h-[48px] text-border-color outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent px-3 mb-[14px] duration-300 ease-in hover:bg-bg-color hover:text-white"
-        >
-          Categoriya tanlash
-        </button>
+        <div className="mb-[14px]">
+          <button
+            onClick={() => setCategoriyModal((p) => !p)}
+            className="h-[48px] text-border-color outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent px-3 duration-300 ease-in hover:bg-bg-color hover:text-white"
+          >
+            {categoriyaSelect
+              ? categoryId?.name.charAt(0).toUpperCase() +
+                categoryId?.name.slice(1)
+              : "Categoriya tanlash"}
+          </button>
+
+          <small className="text-red-500 block">
+            {requiredInputValue.selectCategoriya &&
+              "Categoriya tanlashingiz majburiy!"}
+          </small>
+        </div>
 
         {/* Categoriya modal */}
         {categoriyModal ? (
@@ -115,7 +172,7 @@ function AddProductsModal() {
               {categoryName?.map((item, idx) => (
                 <button
                   key={idx}
-                  onClick={() => categoryModalFunction(item?.id)}
+                  onClick={() => categoryModalFunction(item)}
                   className="rounded-[12px] capitalize px-5 py-1 border-[2px] bg-transparent hover:bg-bg-color duration-300 ease-in"
                 >
                   {item?.name}
@@ -126,43 +183,71 @@ function AddProductsModal() {
         ) : (
           ""
         )}
-
         <form onSubmit={handleAddCategoriya} className="flex flex-col gap-3.5">
-          <input
-            onChange={productValue}
-            name="title"
-            autoComplete="off"
-            type="text"
-            placeholder="Nomi ..."
-            className="w-full h-[48px] outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent px-3"
-          />
+          <div>
+            <input
+              onChange={productValue}
+              name="title"
+              autoComplete="off"
+              type="text"
+              placeholder="Nomi ..."
+              className="w-full h-[48px] outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent px-3"
+              // required
+            />
 
-          <textarea
-            onChange={productValue}
-            name="description"
-            rows={5}
-            placeholder="Description ..."
-            className="w-full outline-none resize-none rounded-[12px] border-[1px] border-bg-color bg-transparent p-3"
-          ></textarea>
+            <small className="text-red-500">
+              {requiredInputValue.selectName &&
+                "Maxsulot nomini kiritishingiz majburiy!"}
+            </small>
+          </div>
+
+          <div>
+            <textarea
+              onChange={productValue}
+              name="description"
+              rows={5}
+              placeholder="Description ..."
+              className="w-full outline-none resize-none rounded-[12px] border-[1px] border-bg-color bg-transparent p-3"
+              // required
+            ></textarea>
+            <small className="text-red-500">
+              {requiredInputValue.selectDescription &&
+                "Description nomini kiritishingiz majburiy!"}
+            </small>
+          </div>
 
           <div className="flex items-center justify-between gap-5">
-            <input
-              onChange={productValue}
-              name="price"
-              className="w-full h-[48px] outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent px-3"
-              autoComplete="off"
-              type="text"
-              placeholder="Narxi ..."
-            />
-            <input
-              onChange={productValue}
-              name="location"
-              className="w-full h-[48px] outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent px-3"
-              autoComplete="off"
-              type="text"
-              placeholder="Manzili ..."
-              multiple
-            />
+            <div className="w-full">
+              <input
+                onChange={productValue}
+                name="price"
+                className="w-full h-[48px] outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent px-3"
+                autoComplete="off"
+                type="text"
+                placeholder="Narxi ..."
+              />
+              <small className="text-red-500">
+                {requiredInputValue.selectPrice &&
+                  "Narxini kiritishingiz majburiy!"}
+              </small>
+            </div>
+
+            <div className="w-full">
+              <input
+                onChange={productValue}
+                name="location"
+                className="w-full h-[48px] outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent px-3"
+                autoComplete="off"
+                type="text"
+                placeholder="Manzili ..."
+                multiple
+              />
+
+              <small className="text-red-500">
+                {requiredInputValue.selectLocation &&
+                  "Manzilingizni kiritishingiz majburiy!"}
+              </small>
+            </div>
           </div>
 
           <div className="">

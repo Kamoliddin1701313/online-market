@@ -19,7 +19,7 @@ async function ProductsId({ params }) {
   }
 
   return (
-    <div className="py-10 pl-5">
+    <div className="">
       {!product ? (
         <Loading />
       ) : (
@@ -43,7 +43,7 @@ async function ProductsId({ params }) {
               <div className="flex justify-between text-gray-800">
                 <span className="font-semibold text-gray-600">💰 Narxi:</span>
                 <span className="text-green-600 font-bold">
-                  {product.price} so‘m
+                  {parseFloat(product.price)}
                 </span>
               </div>
 
