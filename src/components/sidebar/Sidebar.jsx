@@ -90,13 +90,12 @@ function Sidebar({ sidebarMenu }) {
         categoriyaData?.map((value) => {
           return (
             <Link
-              prefetch={false}
-              href={`${value.path}`}
+              href={value.path}
               key={value?.id}
               className={`${
                 !sidebarMenu ? "px-4" : "px-2 justify-center"
               } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff]
-                  ${pathname === value.path ? "bg-[#789597ff]" : ""}`}
+                  ${pathname === `${value.path}` ? "bg-[#789597ff]" : ""}`}
             >
               <span>{value?.icon}</span>
 
@@ -127,13 +126,13 @@ function Sidebar({ sidebarMenu }) {
         sellingData?.map((value) => {
           return (
             <Link
+              href={value.path}
               prefetch={false}
-              href={`${value.path}`}
               key={value?.id}
               className={`${
                 !sidebarMenu ? "px-4" : "px-2 justify-center"
               } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff] 
-                  ${pathname === value.path ? "bg-[#789597ff]" : ""}`}
+                   ${pathname === `${value.path}` ? "bg-[#789597ff]" : ""}`}
             >
               <span>{value?.icon}</span>
               {!sidebarMenu ? (
@@ -159,13 +158,13 @@ function Sidebar({ sidebarMenu }) {
         buyingData?.map((value) => {
           return (
             <Link
+              href={value.path}
               prefetch={false}
-              href={`${value.path}`}
               key={value?.id}
               className={`${
                 !sidebarMenu ? "px-4" : "px-2 justify-center"
               } flex items-center w-full h-[50px] gap-2.5 cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#789597ff] 
-                  ${pathname === value.path ? "bg-[#789597ff]" : ""}`}
+                   ${pathname === `${value.path}` ? "bg-[#789597ff]" : ""}`}
             >
               <span>{value?.icon}</span>
 

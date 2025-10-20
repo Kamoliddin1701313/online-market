@@ -10,9 +10,11 @@ function Requests() {
   return (
     <div className="border-[2px] border-border-color w-full rounded-[18px] p-5 bg-white">
       <h1 className="text-[20px]">Post Ad-Buy Request</h1>
+      
       <p className="text-border-color">
         Create a buyer request.Blue actions indecate publishing.
       </p>
+
       <form className="flex flex-col gap-5 my-3">
         <div className="border-border-color border-[2px] rounded-[18px] w-full p-4">
           <span className="text-border-color">Title</span>
