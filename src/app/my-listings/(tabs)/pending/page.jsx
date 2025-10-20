@@ -1,3 +1,4 @@
+"use client";
 import LoadingCircul from "@/components/loading/LoadingCircul";
 import Skelton from "@/components/loading/Skelton";
 import { get } from "@/lib/api";

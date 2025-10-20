@@ -10,7 +10,7 @@ function Requests() {
   return (
     <div className="border-[2px] border-border-color w-full rounded-[18px] p-5 bg-white">
       <h1 className="text-[20px]">Post Ad-Buy Request</h1>
-      
+
       <p className="text-border-color">
         Create a buyer request.Blue actions indecate publishing.
       </p>

@@ -1,3 +1,4 @@
+"use client";
 import LoadingCircul from "@/components/loading/LoadingCircul";
 import { get } from "@/lib/api";
 import Image from "next/image";
