@@ -142,7 +142,7 @@ function AddProductsModal() {
   }, []);
 
   return (
-    <div className="fixed flex bg-bg-categoryModalColor inset-0 justify-center items-center z-50">
+    <div className="fixed flex bg-sidebar-color inset-0 justify-center items-center z-50">
       <div className="animate-fadeInDown relative w-3/5 mx-auto rounded-xl p-6 bg-white">
         <h2 className="font-normal text-[28px] mb-4 text-border-color">
           Maxsulotlar qo'shish
@@ -151,7 +151,7 @@ function AddProductsModal() {
         <div className="mb-[14px]">
           <button
             onClick={() => setCategoriyModal((p) => !p)}
-            className="h-[48px] text-border-color outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent px-3 duration-300 ease-in hover:bg-bg-color hover:text-white"
+            className="h-[48px] text-border-color outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent px-3 duration-300 ease-in hover:bg-bg-color"
           >
             {categoriyaSelect
               ? categoryId?.name.charAt(0).toUpperCase() +
@@ -292,13 +292,13 @@ function AddProductsModal() {
 
           <div className="ml-auto flex items-center gap-5">
             <button
-              className="h-[48px] cursor-pointer text-border-color duration-300 ease-in rounded-[12px] border-[1px] border-bg-color px-5 hover:bg-bg-color hover:text-white"
+              className="h-[48px] cursor-pointer text-white duration-300 ease-in rounded-[12px] border-[1px] border-bg-color px-5 bg-btn-color"
               type="submit"
             >
               Qo'shish
             </button>
             <button
-              className="h-[48px] cursor-pointer text-border-color duration-300 ease-in rounded-[12px] border-[1px] border-bg-color px-5 hover:bg-bg-color hover:text-white"
+              className="h-[48px] cursor-pointer text-white duration-300 ease-in rounded-[12px] border-[1px] border-bg-color px-5 bg-btn-color"
               type="button"
               onClick={backButton}
             >

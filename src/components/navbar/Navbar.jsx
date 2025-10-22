@@ -29,12 +29,19 @@ function Navbar() {
     dispatch(getLocalStorageToken());
   }, [dispatch]);
 
+  const handleAddButtonClick = () => {
+    // Modalni ochish
+    dispatch(addProductsModal());
+    // Route ni o'zgartirish
+    router.push("/");
+  };
+
   return (
-    <div className="h-[70px] bg-bg-color w-full top-0 left-0 fixed z-30 py-3">
+    <div className="h-[70px] bg-white w-full top-0 left-0 fixed z-30 py-3">
       <div className="max-w-[1280px] mx-auto flex items-center h-full gap-8 justify-between">
         <Link
           href="/"
-          className="h-full rounded-[8px] px-2.5 w-1/8 text-center flex items-center border-[2px] border-border-color hover:bg-white hover:border-white duration-300 ease-in"
+          className="h-full rounded-[8px] px-2.5 w-1/8 text-center flex items-center border-[2px] border-border-color"
         >
           <Image src={logo} alt="logo" className="w-[120px]" />
         </Link>
@@ -42,7 +49,7 @@ function Navbar() {
         {/* categoriya va search va actegoriya qo'shiladigan divlar jamlanmasi */}
         <div className="flex items-center gap-5 h-full w-full">
           <div className="h-full">
-            <button className="border-[2px] border-border-color cursor-pointer h-full rounded-[8px] flex items-center justify-center px-2.5 hover:bg-white duration-300 ease-in hover:border-white">
+            <button className="border-[2px] border-border-color cursor-pointer h-full rounded-[8px] flex items-center justify-center px-2.5">
               <TbAdjustmentsHorizontal className="text-[24px]" />
             </button>
           </div>
@@ -66,8 +73,8 @@ function Navbar() {
           </div>
 
           <button
-            onClick={() => dispatch(addProductsModal())}
-            className="flex items-center gap-2.5 border-[2px] hover:border-white border-border-color h-full rounded-[8px] px-3.5 cursor-pointer hover:bg-white duration-300 ease-in"
+            onClick={handleAddButtonClick}
+            className="flex items-center gap-2.5 border-[2px] border-[#0D5950] h-full rounded-[8px] px-3.5 cursor-pointer bg-[#0D5950] duration-300 ease-in text-white"
           >
             <IoMdAdd />
             <span>Qo'shish</span>

@@ -7,7 +7,7 @@ function NotFound() {
     <div className="h-[90vh]">
       <Image
         src={not_found}
-        className="w-full h-full bg-green-700"
+        className="w-full h-full"
         alt="Page not found illustration"
       />
     </div>

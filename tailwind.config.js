@@ -17,9 +17,11 @@ module.exports = {
     extend: {
       colors: {
         "border-color": "#adadad",
-        "bg-color": "#789597ff",
-        "body-color": "#F1F4FB",
+        "sidebar-color": "#F9FAFC",
+        "sidebar-btn-color": "#EEF2FE",
+        "body-color": "#F7F8FA",
         "bg-categoryModalColor": "#F6F9FA",
+        "btn-color": "#0D5950",
       },
 
       keyframes: {
@@ -37,7 +39,7 @@ module.exports = {
           "0%": { opacity: "0", transform: "translateY(-20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        
+
         fadeScale: {
           "0%": { opacity: "0", transform: "scale(0)" },
           "100%": { opacity: "1", transform: "scale(1)" },

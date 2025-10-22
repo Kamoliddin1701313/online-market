@@ -63,7 +63,7 @@ function Inactive({ activeTab }) {
                         e.preventDefault();
                         // e.stopPropagation();
                       }}
-                      className="bg-bg-color rounded-[12px] p-2.5 grid place-items-center cursor-pointer"
+                      className="bg-body-color rounded-[12px] p-2.5 grid place-items-center cursor-pointer"
                     >
                       <FaRegHeart className="text-[18px]" />
                     </button>
@@ -73,7 +73,7 @@ function Inactive({ activeTab }) {
                         e.preventDefault();
                         // e.stopPropagation();
                       }}
-                      className="bg-bg-color rounded-[12px] p-[8px] cursor-pointer"
+                      className="bg-body-color rounded-[12px] p-[8px] cursor-pointer"
                     >
                       <PiShoppingCartBold className="text-[20px]" />
                     </button>
@@ -81,7 +81,7 @@ function Inactive({ activeTab }) {
                 </div>
 
                 <div className="px-4 py-2">
-                  <button className="bg-bg-color cursor-pointer text-white my-2.5 rounded-2xl py-1.5 px-5 text-center">
+                  <button className="bg-btn-color cursor-pointer text-white my-2.5 rounded-2xl py-1.5 px-5 text-center">
                     Buy
                   </button>
 

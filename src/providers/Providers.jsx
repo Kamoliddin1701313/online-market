@@ -25,12 +25,11 @@ function Providers({ children }) {
           style={{ minHeight: "calc(100vh - 70px - 60px)" }}
         >
           {/* Sidebar */}
-          {/* salomat */}
           <div className="relative mt-[70px] w-full">
             <div
               className={`${
                 sidebarMenu ? "w-[100px]" : "w-[290px]"
-              } fixed z-10 max-h-[70vh] transition-all duration-300 ease-in`}
+              } fixed z-10 h-[100vh] transition-all duration-300 ease-in bg-sidebar-color`}
             >
               <Sidebar sidebarMenu={sidebarMenu} />
 
@@ -38,7 +37,7 @@ function Providers({ children }) {
                 onClick={toggleSidebarMenu}
                 className="group transition-all duration-300 ease-in absolute flex justify-center items-center top-0 -right-[36px] bg-white w-[36px] h-[36px] rounded-r-[10px] hover:bg-bg-color"
               >
-                <IoSettingsOutline className="text-[20px] group-hover:text-white transition-all duration-300 ease-in" />
+                <IoSettingsOutline className="text-[20px] transition-all duration-300 ease-in" />
               </button>
             </div>
 
