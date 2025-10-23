@@ -23,6 +23,9 @@ function AddProductsModal() {
     image: "",
     location: "",
     is_active: "",
+    image: "",
+    icon: "",
+    emoji: "",
   });
 
   const [requiredInputValue, setRequiredInputValue] = useState({
@@ -168,16 +171,19 @@ function AddProductsModal() {
         {/* Categoriya modal */}
         {categoriyModal ? (
           <div className="absolute grid place-items-center bg-[#404040cd] rounded-xl w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div className="animate-fadeScale w-1/2 min-h-[200px]  bg-white border-none p-5 rounded-[12px] flex gap-3 items-start">
-              {categoryName?.map((item, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => categoryModalFunction(item)}
-                  className="rounded-[12px] capitalize px-5 py-1 border-[2px] bg-transparent hover:bg-bg-color duration-300 ease-in"
-                >
-                  {item?.name}
-                </button>
-              ))}
+            <div className="animate-fadeScale w-1/2 min-h-[200px]  bg-white border-none p-5 rounded-[12px] flex gap-3 items-start flex-wrap">
+              {categoryName
+                ?.slice()
+                .reverse()
+                .map((item, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => categoryModalFunction(item)}
+                    className="rounded-[12px] capitalize px-5 py-1 border-[2px] bg-transparent hover:bg-bg-color duration-300 ease-in"
+                  >
+                    {item?.name}
+                  </button>
+                ))}
             </div>
           </div>
         ) : (
@@ -250,7 +256,7 @@ function AddProductsModal() {
             </div>
           </div>
 
-          <div className="">
+          {/* <div className="">
             <label
               htmlFor="active"
               className="border-[1.5px] w-[26px] h-[26px] cursor-pointer flex justify-center items-center rounded-[8px] bg-transparent border-bg-color"
@@ -269,7 +275,7 @@ function AddProductsModal() {
               onChange={productValue}
               className="hidden"
             />
-          </div>
+          </div> */}
 
           <div>
             <input
