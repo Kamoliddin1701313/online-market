@@ -11,11 +11,11 @@ function ProductsList({ productList }) {
         <Link
           href={`/products/${item.id}`}
           key={index}
-          className="bg-white rounded-[12px] overflow-hidden"
+          className="bg-white rounded-[12px] overflow-hidden hover:shadow-lg transition-shadow"
         >
           <div className="w-full h-[200px] relative">
             <Image
-              src={item.image || "/no-image.png"}
+              src={item.images[0].image || "/no-image.png"}
               alt={item?.title}
               fill
               className="object-cover"

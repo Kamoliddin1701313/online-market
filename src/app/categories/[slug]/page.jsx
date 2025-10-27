@@ -2,10 +2,14 @@ import { GrFormPreviousLink } from "react-icons/gr";
 import { GrFormNext } from "react-icons/gr";
 import Link from "next/link";
 import Image from "next/image";
-import telefon from "../../../../public/images/iphone.webp";
+import noImg from "../../../../public/images/no-img.webp";
+import { get } from "@/lib/api";
 
-function CategoriesDetail({ params }) {
+async function CategoriesDetail({ params }) {
   const { slug } = params;
+  const res = await get(`subcategories/?category=${slug}`, {
+    cache: "no-store",
+  });
 
   const subcategory = [
     {
@@ -74,11 +78,9 @@ function CategoriesDetail({ params }) {
     },
   ];
 
-  console.log(slug);
-
   return (
-    <div className="">
-      <div className="flex flex-col gap-[10px] bg-[#FFFCF7] border-sidebar-btn-color border-[3px] rounded-[24px] p-5 mb-8">
+    <>
+      <div className="flex flex-col gap-[10px] bg-[#FFFCF7] border-sidebar-btn-color border-[3px] rounded-[24px] p-5 mb-6">
         <div className="flex items-center gap-3">
           <Link
             href="/categories"
@@ -89,49 +91,73 @@ function CategoriesDetail({ params }) {
           </Link>
 
           <div className="flex items-center gap-2">
-            <h3 className="font-semibold">Bolalar dunyosi</h3>
+            <h3 className="font-semibold">{res[0]?.category?.name}</h3>
           </div>
         </div>
 
         <p className="text-gray-700 text-lg mt-2">
-          Bolalar uchun o'yinchoqlar, kiyimlar, kitoblar va boshqa mahsulotlarni
-          bu yerdan toping
+          {res[0]?.category?.description == ""
+            ? "Description bo'sh"
+            : res[0]?.category?.description}
         </p>
       </div>
 
       <div className="grid grid-cols-3 gap-3 items-stretch p-5 bg-white border-sidebar-btn-color border-[3px] rounded-[24px]">
-        {subcategory.map((item) => (
-          <div
+        {res?.map((item) => (
+          <Link
+            href={`${slug}/${item?.id}`}
             key={item.id}
             className="bg-[#FFF1F0] border-sidebar-btn-color border-[3px] rounded-[24px] p-4 hover:shadow-lg transition-shadow"
           >
-            <div className="flex justify-between items-center mb-3">
-              <span className="text-[22px]">{item.smaylik}</span>
-              <Link href="/">
-                <GrFormNext className="text-[20px]" />
-              </Link>
+            <div className="flex justify-between items-center mb-2">
+              {item.icon == null ? (
+                <span className="text-[22px] w-[28px] h-[28px]">🧸</span>
+              ) : (
+                <Image
+                  alt="salom"
+                  width={24}
+                  height={24}
+                  className="w-[28px] h-[28px] rounded-full object-cover"
+                  src={item.icon}
+                />
+              )}
+
+              <GrFormNext className="text-[20px]" />
             </div>
 
             <div className="flex items-center mb-3 gap-1">
               <h3 className="text-[16px] font-semibold text-gray-800 line-clamp-1">
                 {item.title}
               </h3>
-              <span className="text-[20px]">{item.smaylik}</span>
+
+              {item.icon == null ? (
+                <span className="text-[22px] w-[26px] h-[26px]">🧸</span>
+              ) : (
+                <Image
+                  alt="salom"
+                  width={24}
+                  height={24}
+                  className="w-[26px] h-[26px] rounded-full object-cover"
+                  src={item.icon}
+                />
+              )}
             </div>
 
             <Image
-              src={telefon}
-              alt="Image"
+              src={item?.image == null ? noImg : item?.image}
+              alt={item?.title}
+              width={160}
+              height={160}
               className="w-full h-[160px] object-cover rounded-[16px]"
             />
 
             <p className="text-gray-600 line-clamp-1 mt-2">
-              {item.description}
+              {item.description == "" ? "Description bo'sh" : item.description}
             </p>
-          </div>
+          </Link>
         ))}
       </div>
-    </div>
+    </>
   );
 }
 

@@ -19,7 +19,7 @@ async function ProductsId({ params }) {
   }
 
   return (
-    <div className="">
+    <>
       {!product ? (
         <Loading />
       ) : (
@@ -33,7 +33,7 @@ async function ProductsId({ params }) {
               {product.title}
             </h1>
 
-            <div className="space-y-3">
+            <div className="space-y-5">
               <p className="text-gray-700 text-lg leading-relaxed">
                 {product.description}
               </p>
@@ -74,18 +74,24 @@ async function ProductsId({ params }) {
             </div>
           </div>
 
-          <div className="w-full mt-5">
-            <Image
-              src={product.image}
-              alt={product.title || "Mahsulot rasmi"}
-              width={500}
-              height={500}
-              className="rounded-[16px] w-full h-auto max-h-[500px] shadow-md"
-            />
+          <div className="w-full mt-3 flex flex-col gap-5">
+            {product?.images?.map((img) => {
+              const { image, id } = img;
+              return (
+                <Image
+                  key={id}
+                  src={image}
+                  alt={product?.title || "Mahsulot rasmi"}
+                  width={500}
+                  height={500}
+                  className="rounded-[16px] w-full h-[450px] shadow-md"
+                />
+              );
+            })}
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

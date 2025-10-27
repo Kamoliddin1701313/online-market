@@ -181,19 +181,11 @@ function Requests() {
             <span className="text-border-color">Contact info</span>
             <div className="w-full h-[42px] border-border-color border-[2px] rounded-[12px] mt-2 overflow-hidden flex justify-between items-center">
               <label
-                htmlFor="location"
+                htmlFor="phone"
                 className="h-full w-[45px] flex items-center justify-center"
               >
                 <LuPhoneCall />
               </label>
-
-              <input
-                id="location"
-                type="text"
-                autoComplete="off"
-                placeholder="+998 97-777-77-77"
-                className="h-full w-full outline-none"
-              />
             </div>
           </div>
         </div>

@@ -94,6 +94,8 @@ function Products() {
     return () => window.removeEventListener("products-updated", handleUpdate);
   }, []);
 
+  
+
   return (
     <div className="flex flex-col">
       <div className="animate-fadeInDown w-full flex justify-between items-center px-5 py-3 border-[2px] shadow-[0_0_8px_rgba(0,0,0,0.25)] border-[#50505070] rounded-[20px]">

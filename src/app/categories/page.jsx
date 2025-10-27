@@ -1,3 +1,4 @@
+import { get } from "@/lib/api";
 import Link from "next/link";
 import React from "react";
 import {
@@ -16,7 +17,7 @@ import {
   FaHardHat,
 } from "react-icons/fa";
 
-function Categories() {
+async function Categories() {
   const categoriyaList = [
     {
       id: 1,
@@ -111,27 +112,39 @@ function Categories() {
     },
   ];
 
+  const res = await get("categories/", {
+    cache: "no-store",
+  });
+
+  // const category = await res.json();
+
+  // http://olx.digitallaboratory.uz/categories/
+  // icon image
+
   return (
     <div>
       <h1 className="text-[20px] font-semibold">Kategoriyalar</h1>
       <div className="grid grid-cols-4 gap-3 my-5">
-        {categoriyaList &&
-          categoriyaList?.map((value) => {
-            return (
-              <Link
-                key={value?.id}
-                href={`/categories${value?.path}`}
-                className="group border-sidebar-btn-color bg-white border-[2px] rounded-[32px] px-3 py-4 flex items-center gap-2 hover:bg-border-color duration-300 ease-in"
-              >
-                <span className="p-[10px] rounded-full grid place-items-center bg-border-color text-[#272727] group-hover:bg-white duration-300 ease-in">
-                  {value?.icon}
-                </span>
-                <span className="text-[16px] leading-5">
-                  {value?.name} {value?.smaylik}
-                </span>
-              </Link>
-            );
-          })}
+        {res &&
+          res
+            ?.slice()
+            .reverse()
+            .map((value) => {
+              return (
+                <Link
+                  key={value?.id}
+                  href={`/categories/${value?.id}`}
+                  className="group border-sidebar-btn-color bg-white border-[2px] rounded-[32px] px-3 py-4 flex items-center gap-2 hover:bg-border-color duration-300 ease-in"
+                >
+                  <span className="p-[10px] rounded-full grid place-items-center bg-border-color text-[#272727] group-hover:bg-white duration-300 ease-in">
+                    {value?.image == null ? <FaCar /> : value?.image}
+                  </span>
+                  <span className="text-[16px] leading-5">
+                    {value?.name} {value?.icon == null ? "👶" : value?.icon}
+                  </span>
+                </Link>
+              );
+            })}
       </div>
     </div>
   );
