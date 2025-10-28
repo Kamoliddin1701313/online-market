@@ -8,7 +8,7 @@ export default function BackButton({ children }) {
   return (
     <button
       onClick={() => router.back()}
-      className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 flex items-center gap-[6px]"
+      className="px-4 h-[42px] bg-[#0D5950] text-white flex items-center gap-[6px]"
     >
       {children}
     </button>

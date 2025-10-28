@@ -54,11 +54,11 @@ function MyListings() {
       case "approved":
         return <Active activeTab={memoizedActiveTab} />;
 
-      case "inactive":
-        return <Inactive activeTab={memoizedActiveTab} />;
-
       case "pending":
         return <Pending activeTab={memoizedActiveTab} />;
+
+      case "inactive":
+        return <Inactive activeTab={memoizedActiveTab} />;
 
       case "rejected":
         return <Rejected activeTab={memoizedActiveTab} />;

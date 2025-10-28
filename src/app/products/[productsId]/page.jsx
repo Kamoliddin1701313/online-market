@@ -3,6 +3,7 @@ import { get } from "@/lib/api";
 import Loading from "@/components/loading/Loading";
 import BackButton from "@/components/backButton/BackButton";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
+import { MdEdit } from "react-icons/md";
 
 export const dynamic = "force-dynamic"; // ixtiyoriy: har safar yangilansin desang
 
@@ -24,9 +25,17 @@ async function ProductsId({ params }) {
         <Loading />
       ) : (
         <div className="flex flex-col md:flex-row items-start gap-5 justify-between bg-white shadow-lg rounded-2xl p-6">
-          <BackButton>
-            <HiOutlineArrowNarrowLeft className="mt-1" /> Orqaga
-          </BackButton>
+          <div className="flex items-center justify-between w-full">
+            <BackButton>
+              <HiOutlineArrowNarrowLeft className="mt-1 text-[18px]" />
+              Orqaga
+            </BackButton>
+
+            <button className="px-4 h-[42px] bg-[#0D5950] text-white flex items-center gap-2">
+              <MdEdit className="text-[15px] mt-[2px]" />
+              Tahrirlash
+            </button>
+          </div>
 
           <div className="w-full md:w-1/2 space-y-5">
             <h1 className="text-3xl font-bold text-gray-800 mb-6">
