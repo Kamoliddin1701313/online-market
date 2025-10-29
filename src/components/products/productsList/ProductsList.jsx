@@ -15,7 +15,7 @@ function ProductsList({ productList }) {
         >
           <div className="w-full h-[200px] relative">
             <Image
-              src={item.images[0].image || "/no-image.png"}
+              src={item?.images[0]?.image || "/no-image.png"}
               alt={item?.title}
               fill
               className="object-cover"

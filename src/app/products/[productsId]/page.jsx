@@ -3,7 +3,6 @@ import { get } from "@/lib/api";
 import Loading from "@/components/loading/Loading";
 import BackButton from "@/components/backButton/BackButton";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
-import { MdEdit } from "react-icons/md";
 
 export const dynamic = "force-dynamic"; // ixtiyoriy: har safar yangilansin desang
 
@@ -19,6 +18,7 @@ async function ProductsId({ params }) {
     console.error("Xatolik:", error);
   }
 
+
   return (
     <>
       {!product ? (
@@ -30,11 +30,6 @@ async function ProductsId({ params }) {
               <HiOutlineArrowNarrowLeft className="mt-1 text-[18px]" />
               Orqaga
             </BackButton>
-
-            <button className="px-4 h-[42px] bg-[#0D5950] text-white flex items-center gap-2">
-              <MdEdit className="text-[15px] mt-[2px]" />
-              Tahrirlash
-            </button>
           </div>
 
           <div className="w-full md:w-1/2 space-y-5">

@@ -4,7 +4,7 @@ import { get } from "@/lib/api";
 import Image from "next/image";
 import Link from "next/link";
 import { parse } from "postcss";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { PiShoppingCartBold } from "react-icons/pi";
 
@@ -30,6 +30,8 @@ function Active({ activeTab }) {
     getActiveData();
   }, [activeTab]);
 
+  console.log(active, "active");
+
   return (
     <>
       {productsList ? (
@@ -43,7 +45,7 @@ function Active({ activeTab }) {
           ) : (
             active?.map((item, index) => (
               <Link
-                href={`/products/${item.id}`}
+                href={`my-listings/${item.id}?status=${activeTab}`}
                 key={index}
                 className="bg-white rounded-[12px] overflow-hidden"
               >
@@ -101,4 +103,4 @@ function Active({ activeTab }) {
   );
 }
 
-export default Active;
+export default React.memo(Active);

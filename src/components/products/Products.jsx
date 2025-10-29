@@ -90,11 +90,8 @@ function Products() {
     fetchProducts();
     const handleUpdate = () => fetchProducts();
     window.addEventListener("products-updated", handleUpdate);
-
     return () => window.removeEventListener("products-updated", handleUpdate);
   }, []);
-
-  
 
   return (
     <div className="flex flex-col">

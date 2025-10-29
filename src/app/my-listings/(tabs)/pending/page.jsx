@@ -4,7 +4,7 @@ import Skelton from "@/components/loading/Skelton";
 import { get } from "@/lib/api";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { PiShoppingCartBold } from "react-icons/pi";
 
@@ -28,6 +28,8 @@ function Pending({ activeTab }) {
     getActiveData();
   }, [activeTab]);
 
+  console.log(active, "pending");
+
   return (
     <>
       {productsList ? (
@@ -40,8 +42,9 @@ function Pending({ activeTab }) {
             <h1>Malumot yo'q</h1>
           ) : (
             active?.map((item, index) => (
+              // URL ga status parametrini qo'shish
               <Link
-                href={`/products/${item.id}`}
+                href={`my-listings/${item.id}?status=${activeTab}`}
                 key={index}
                 className="bg-white rounded-[12px] overflow-hidden"
               >
@@ -99,4 +102,4 @@ function Pending({ activeTab }) {
   );
 }
 
-export default Pending;
+export default React.memo(Pending);

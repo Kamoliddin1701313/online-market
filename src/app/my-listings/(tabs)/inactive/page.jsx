@@ -4,7 +4,7 @@ import Skelton from "@/components/loading/Skelton";
 import { get } from "@/lib/api";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { PiShoppingCartBold } from "react-icons/pi";
 
@@ -28,9 +28,7 @@ function Inactive({ activeTab }) {
     getActiveData();
   }, [activeTab]);
 
-  if (active.length === 0) {
-    return <h1>Malumot yo'q ekan</h1>;
-  }
+  console.log(active, "inactive");
 
   return (
     <>
@@ -45,7 +43,7 @@ function Inactive({ activeTab }) {
           ) : (
             active?.map((item, index) => (
               <Link
-                href={`/products/${item.id}`}
+                href={`my-listings/${item.id}?status=${activeTab}`}
                 key={index}
                 className="bg-white rounded-[12px] overflow-hidden"
               >
@@ -103,4 +101,4 @@ function Inactive({ activeTab }) {
   );
 }
 
-export default Inactive;
+export default React.memo(Inactive);
