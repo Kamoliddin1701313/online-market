@@ -28,8 +28,6 @@ function Pending({ activeTab }) {
     getActiveData();
   }, [activeTab]);
 
-  console.log(active, "pending");
-
   return (
     <>
       {productsList ? (

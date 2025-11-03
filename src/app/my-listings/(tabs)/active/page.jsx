@@ -30,8 +30,6 @@ function Active({ activeTab }) {
     getActiveData();
   }, [activeTab]);
 
-  console.log(active, "active");
-
   return (
     <>
       {productsList ? (

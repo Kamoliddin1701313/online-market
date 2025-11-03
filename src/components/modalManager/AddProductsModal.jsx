@@ -79,12 +79,6 @@ function AddProductsModal() {
   };
 
   const productValue = (e) => {
-    // if (e.target.name === "images_upload") {
-    //   setCategory({ ...category, images_upload: e.target.files });
-    // } else {
-    //   setCategory({ ...category, [e.target.name]: e.target.value });
-    // }
-
     if (e.target.name === "images_upload") {
       const files = Array.from(e.target.files);
 
@@ -199,8 +193,6 @@ function AddProductsModal() {
     getCategoryName();
   }, []);
 
-  console.log(category, "NIMA gap");
-
   return (
     <>
       <div className="fixed flex bg-sidebar-color inset-0 justify-center items-center z-50">
@@ -213,7 +205,7 @@ function AddProductsModal() {
             <div className="mb-[14px]">
               <button
                 onClick={() => setCategoriyModal((p) => !p)}
-                className="h-[42px] min-w-[200px] text-border-color outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent duration-300 ease-in hover:bg-bg-color"
+                className="h-[42px] min-w-[200px] text-border-color rounded-[12px] border-[1px] border-bg-color bg-transparent duration-300 ease-in hover:bg-bg-color"
               >
                 {categoriyaSelect
                   ? categoryId?.name.charAt(0).toUpperCase() +
@@ -267,6 +259,7 @@ function AddProductsModal() {
             ""
           )}
 
+          {/* SubCategoriya modal */}
           {subCategoriyModal ? (
             <div className="absolute z-20 grid place-items-center bg-[#404040cd] rounded-xl w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
               <div className="animate-fadeScale w-1/2 min-h-[200px]  bg-white border-none p-5 rounded-[12px] flex gap-3 items-start flex-wrap">

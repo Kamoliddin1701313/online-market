@@ -4,11 +4,13 @@ import Stack from "@mui/material/Stack";
 
 function Skelton() {
   return (
-    <div>
+    <div className="w-full h-full">
       <Stack spacing={1}>
         <Skeleton
-          variant="text"
-          sx={{ fontSize: "1rem", bgcolor: "grey.800" }}
+          variant="rectangular"
+          width="100%"
+          height={20}
+          sx={{ bgcolor: "grey.800" }}
         />
         <Skeleton
           variant="circular"
@@ -18,13 +20,61 @@ function Skelton() {
         />
         <Skeleton
           variant="rectangular"
+          width="90%"
+          height={50}
+          sx={{ bgcolor: "grey.800" }}
+        />
+        <Skeleton
+          variant="rectangular"
           width="75%"
           height={50}
           sx={{ bgcolor: "grey.800" }}
         />
         <Skeleton
-          variant="rounded"
+          variant="circular"
+          width={40}
+          height={40}
+          sx={{ bgcolor: "grey.800" }}
+        />
+        <Skeleton
+          variant="rectangular"
+          width="50%"
+          height={50}
+          sx={{ bgcolor: "grey.800" }}
+        />
+        <Skeleton
+          variant="rectangular"
           width="75%"
+          height={50}
+          sx={{ bgcolor: "grey.800" }}
+        />
+        <Skeleton
+          variant="circular"
+          width={40}
+          height={40}
+          sx={{ bgcolor: "grey.800" }}
+        />
+        <Skeleton
+          variant="rectangular"
+          width="50%"
+          height={50}
+          sx={{ bgcolor: "grey.800" }}
+        />
+        <Skeleton
+          variant="rectangular"
+          width="75%"
+          height={50}
+          sx={{ bgcolor: "grey.800" }}
+        />
+        <Skeleton
+          variant="circular"
+          width={40}
+          height={40}
+          sx={{ bgcolor: "grey.800" }}
+        />
+        <Skeleton
+          variant="rectangular"
+          width="50%"
           height={50}
           sx={{ bgcolor: "grey.800" }}
         />
