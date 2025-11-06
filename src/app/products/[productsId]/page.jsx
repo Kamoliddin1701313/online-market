@@ -75,7 +75,7 @@ function ProductsId() {
                   className="w-full h-[300px] rounded-[16px] object-cover"
                 />
               ) : (
-                <div className="h-[300px] overflow-hidden">
+                <div className="h-[300px] overflow-hidden rounded-[16px]">
                   <Skelton />
                 </div>
               )}

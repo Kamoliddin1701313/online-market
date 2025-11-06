@@ -3,6 +3,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* className ga shuni berib qo'yamiz keyin   no-scrollbar */
+}
+
 .loading {
   animation: loading_box 1.2s linear infinite;
 }

@@ -154,9 +154,9 @@ async function Page({ params }) {
               >
                 <Image
                   src={
-                    item?.images[0].image == null
+                    item?.images[0]?.image == null
                       ? noImg
-                      : item?.images[0].image
+                      : item?.images[0]?.image
                   }
                   alt="Image"
                   width={200}
