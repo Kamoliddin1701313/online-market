@@ -10,9 +10,11 @@ import { BiSliderAlt, BiCategory, BiSortAlt2 } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import Loading from "../loading/Loading";
 import ProductsList from "./productsList/ProductsList";
-import Link from "next/link";
+import Sell from "./Sell";
+import Buy from "./Buy";
 
 function Products() {
+  const [tabs, setTabs] = useState(null);
   const [productList, setProductList] = useState([]);
 
   const fetchProducts = async () => {
@@ -28,25 +30,33 @@ function Products() {
     return () => window.removeEventListener("products-updated", handleUpdate);
   }, []);
 
+  const tabPageBtn = (link) => {
+    setTabs(link);
+  };
+
   return (
     <div className="flex flex-col">
       <div className="animate-fadeInDown w-full flex justify-between items-center px-5 py-3 border-[2px] shadow-[0_0_8px_rgba(0,0,0,0.25)] border-[#50505070] rounded-[20px]">
         <div className="flex items-center gap-5">
-          <Link
-            href="/sell"
-            className="flex items-center gap-2.5 rounded-[20px] px-3.5 py-2 cursor-pointer border-[2px] border-[#50505070] hover:bg-btn-color hover:text-white duration-300 ease-in"
+          <button
+            onClick={() => tabPageBtn("sell")}
+            className={`${
+              tabs == "sell" ? "bg-btn-color text-white" : ""
+            } flex items-center gap-2.5 rounded-[20px] px-3.5 py-2 cursor-pointer border-[2px] border-[#50505070] hover:bg-btn-color hover:text-white duration-300 ease-in`}
           >
             <MdOutlineMonetizationOn />
             <span>Sotish</span>
-          </Link>
+          </button>
 
-          <Link
-            href="/buy"
-            className="flex items-center gap-2.5 rounded-[20px] px-3.5 py-2 cursor-pointer border-[2px] border-[#50505070] hover:bg-btn-color hover:text-white duration-300 ease-in"
+          <button
+            onClick={() => tabPageBtn("buy")}
+            className={`${
+              tabs == "buy" ? "bg-btn-color text-white" : ""
+            } flex items-center gap-2.5 rounded-[20px] px-3.5 py-2 cursor-pointer border-[2px] border-[#50505070] hover:bg-btn-color hover:text-white duration-300 ease-in`}
           >
             <FaHandshakeSimple />
             <span>Sotib olish</span>
-          </Link>
+          </button>
 
           <button className="flex items-center gap-2.5 rounded-[20px] px-3.5 py-2 cursor-pointer border-[2px] border-[#50505070] hover:bg-btn-color hover:text-white duration-300 ease-in">
             <SlLocationPin />
@@ -70,13 +80,20 @@ function Products() {
         </button>
       </div>
 
-      {!productList.length ? (
-        <div className="mt-[20%]">
-          <Loading />
+      {tabs === null && (
+        <div>
+          {!productList.length ? (
+            <div className="mt-[20%]">
+              <Loading />
+            </div>
+          ) : (
+            <ProductsList productList={productList} />
+          )}
         </div>
-      ) : (
-        <ProductsList productList={productList} />
       )}
+
+      {tabs === "sell" && <Sell />}
+      {tabs === "buy" && <Buy />}
     </div>
   );
 }

@@ -1,11 +1,22 @@
+"use client";
+
 import { get } from "@/lib/api";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { PiShoppingCartBold } from "react-icons/pi";
 
-async function Sell() {
-  const respons = await get("products/");
+function Sell() {
+  const [respons, setRespons] = useState([]);
+  const getData = async () => {
+    const res = await get("products/");
+    setRespons(res);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <div className="grid grid-cols-4 gap-3.5 mt-5 animate-fadeInUp">
