@@ -10,6 +10,7 @@ import { BiSliderAlt, BiCategory, BiSortAlt2 } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import Loading from "../loading/Loading";
 import ProductsList from "./productsList/ProductsList";
+import Link from "next/link";
 
 function Products() {
   const [productList, setProductList] = useState([]);
@@ -31,15 +32,21 @@ function Products() {
     <div className="flex flex-col">
       <div className="animate-fadeInDown w-full flex justify-between items-center px-5 py-3 border-[2px] shadow-[0_0_8px_rgba(0,0,0,0.25)] border-[#50505070] rounded-[20px]">
         <div className="flex items-center gap-5">
-          <button className="flex items-center gap-2.5 rounded-[20px] px-3.5 py-2 cursor-pointer border-[2px] border-[#50505070] hover:bg-btn-color hover:text-white duration-300 ease-in">
+          <Link
+            href="/sell"
+            className="flex items-center gap-2.5 rounded-[20px] px-3.5 py-2 cursor-pointer border-[2px] border-[#50505070] hover:bg-btn-color hover:text-white duration-300 ease-in"
+          >
             <MdOutlineMonetizationOn />
             <span>Sotish</span>
-          </button>
+          </Link>
 
-          <button className="flex items-center gap-2.5 rounded-[20px] px-3.5 py-2 cursor-pointer border-[2px] border-[#50505070] hover:bg-btn-color hover:text-white duration-300 ease-in">
+          <Link
+            href="/buy"
+            className="flex items-center gap-2.5 rounded-[20px] px-3.5 py-2 cursor-pointer border-[2px] border-[#50505070] hover:bg-btn-color hover:text-white duration-300 ease-in"
+          >
             <FaHandshakeSimple />
             <span>Sotib olish</span>
-          </button>
+          </Link>
 
           <button className="flex items-center gap-2.5 rounded-[20px] px-3.5 py-2 cursor-pointer border-[2px] border-[#50505070] hover:bg-btn-color hover:text-white duration-300 ease-in">
             <SlLocationPin />

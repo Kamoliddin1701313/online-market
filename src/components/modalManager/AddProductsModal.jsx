@@ -28,7 +28,7 @@ function AddProductsModal() {
     images_upload: [],
     location: "",
   });
-  const [condition, setCondition] = useState("new");
+  const [condition, setCondition] = useState(null);
 
   const [imagePreviews, setImagePreviews] = useState([]);
 
@@ -193,6 +193,11 @@ function AddProductsModal() {
     getCategoryName();
   }, []);
 
+  const [openSelect, setOpenSelect] = useState(false);
+  const openSelectBtn = () => {
+    setOpenSelect((p) => !p);
+  };
+
   return (
     <>
       <div className="fixed flex bg-sidebar-color inset-0 justify-center items-center z-50">
@@ -304,24 +309,45 @@ function AddProductsModal() {
               </div>
 
               <div className="w-[220px]">
-                <div className="group relative w-full h-[42px] outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent">
+                <div className="relative w-full h-[42px] outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent">
                   <button
+                    onClick={openSelectBtn}
                     type="button"
                     className="flex items-center justify-center gap-2 w-full h-full"
                   >
-                    <span>Maxsulot sifati</span>
-                    <IoIosArrowDown className="mt-1 text-[18px] group-hover:-rotate-180 duration-300 ease-in-out" />
+                    <span>
+                      {condition == null
+                        ? "Maxsulot sifati"
+                        : condition == "new"
+                        ? "Yangi"
+                        : "Eski"}
+                    </span>
+                    <IoIosArrowDown
+                      className={`${
+                        openSelect ? "-rotate-180" : "rotate-0"
+                      } mt-1 text-[18px] duration-300 ease-in-out`}
+                    />
                   </button>
 
-                  <ul className="hidden animate-fadeInUpSmoll absolute w-full group-hover:flex flex-col bg-body-color rounded-[12px] overflow-hidden">
+                  <ul
+                    className={`${
+                      openSelect ? "block" : "hidden"
+                    } animate-fadeInUpSmoll absolute w-full bg-body-color rounded-[12px] overflow-hidden`}
+                  >
                     <li
-                      onClick={() => setCondition("new")}
+                      onClick={() => {
+                        setCondition("new");
+                        setOpenSelect((p) => !p);
+                      }}
                       className="h-[42px] hover:bg-white p-3 duration-300 ease-in-out cursor-pointer flex items-center"
                     >
                       Yangi
                     </li>
                     <li
-                      onClick={() => setCondition("used")}
+                      onClick={() => {
+                        setCondition("used");
+                        setOpenSelect((p) => !p);
+                      }}
                       className="h-[42px] hover:bg-white p-3 duration-300 ease-in-out cursor-pointer flex items-center"
                     >
                       Eski
