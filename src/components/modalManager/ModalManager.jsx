@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import LogoutModal from "./LogoutModal";
-import AddProductsModal from "./AddProductsModal";
+import AddProductsModal from "./HandleCategoryTypeSelect";
 
 function ModalManager() {
   const logoutFunction = useSelector((state) => state.cart.logoutModal);

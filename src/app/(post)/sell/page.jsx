@@ -1,15 +1,14 @@
 "use client";
 
 import { FiUploadCloud } from "react-icons/fi";
-import { useDispatch } from "react-redux";
-import { addProductsModal } from "@/store/slice/slice";
 import { useEffect, useState } from "react";
 import { get, post } from "@/lib/api";
 import { IoIosArrowDown } from "react-icons/io";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 
-function AddProductsModal() {
+function SellPost() {
   const [categoryName, setCategoryName] = useState([]);
   const [categoriyaSelect, setCategoriyaSelect] = useState(false);
   const [categoriyaSubSelect, setCategoriyaSubSelect] = useState(false);
@@ -17,7 +16,7 @@ function AddProductsModal() {
   const [categorySubId, setCategorySubId] = useState(null);
   const [categoriyModal, setCategoriyModal] = useState(false);
   const [subCategoriyModal, setSubCategoriyModal] = useState(false);
-  const dispatch = useDispatch();
+  const router = useRouter();
 
   const [category, setCategory] = useState({
     category_id: "",
@@ -28,6 +27,7 @@ function AddProductsModal() {
     images_upload: [],
     location: "",
   });
+
   const [condition, setCondition] = useState(null);
 
   const [imagePreviews, setImagePreviews] = useState([]);
@@ -45,10 +45,6 @@ function AddProductsModal() {
   const getCategoryName = async () => {
     const data = await get("categories/");
     setCategoryName(data);
-  };
-
-  const backButton = () => {
-    dispatch(addProductsModal());
   };
 
   const categoryModalFunction = (select) => {
@@ -172,7 +168,7 @@ function AddProductsModal() {
           "Ma'lumotlaringiz qo'shildi. Admin tasdiqlagach ko'rinadi!!!",
           {
             onClose: () => {
-              dispatch(addProductsModal());
+              router.push("/");
             },
           }
         );
@@ -200,8 +196,8 @@ function AddProductsModal() {
 
   return (
     <>
-      <div className="fixed flex bg-sidebar-color inset-0 justify-center items-center z-50">
-        <div className="animate-fadeInDown relative w-3/5 mx-auto rounded-xl p-6 bg-white">
+      <div className="bg-sidebar-color justify-center items-center">
+        <div className="animate-fadeInDown w-full mx-auto rounded-xl p-6 bg-white">
           <h2 className="font-normal text-[28px] mb-4 text-border-color">
             Maxsulotlar qo'shish
           </h2>
@@ -244,8 +240,8 @@ function AddProductsModal() {
 
           {/* Categoriya modal */}
           {categoriyModal ? (
-            <div className="absolute z-20 grid place-items-center bg-[#404040cd] rounded-xl w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="animate-fadeScale w-1/2 min-h-[200px]  bg-white border-none p-5 rounded-[12px] flex gap-3 items-start flex-wrap">
+            <div className="absolute z-10 grid place-items-center bg-[#404040cd] rounded-xl w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="animate-fadeScale w-3/5 justify-center bg-white border-none p-5 rounded-[12px] flex gap-3 items-start flex-wrap">
                 {categoryName
                   ?.slice()
                   .reverse()
@@ -253,7 +249,7 @@ function AddProductsModal() {
                     <button
                       key={idx}
                       onClick={() => categoryModalFunction(item)}
-                      className="rounded-[12px] capitalize px-5 py-1 border-[2px] bg-transparent hover:bg-bg-color duration-300 ease-in"
+                      className="rounded-[12px] capitalize px-5 py-[6px] border-[2px] bg-transparent hover:bg-bg-color duration-300 ease-in"
                     >
                       {item?.name}
                     </button>
@@ -266,8 +262,8 @@ function AddProductsModal() {
 
           {/* SubCategoriya modal */}
           {subCategoriyModal ? (
-            <div className="absolute z-20 grid place-items-center bg-[#404040cd] rounded-xl w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="animate-fadeScale w-1/2 min-h-[200px]  bg-white border-none p-5 rounded-[12px] flex gap-3 items-start flex-wrap">
+            <div className="absolute z-10 grid place-items-center bg-[#404040cd] rounded-xl w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="animate-fadeScale w-3/5 justify-center bg-white border-none p-5 rounded-[12px] flex gap-3 items-start flex-wrap">
                 {categoryName
                   ?.slice()
                   .reverse()
@@ -275,7 +271,7 @@ function AddProductsModal() {
                     <button
                       key={idx}
                       onClick={() => categorySubModalFunction(item)}
-                      className="rounded-[12px] capitalize px-5 py-1 border-[2px] bg-transparent hover:bg-bg-color duration-300 ease-in"
+                      className="rounded-[12px] capitalize px-5 py-[6px] border-[2px] bg-transparent hover:bg-bg-color duration-300 ease-in"
                     >
                       {item?.name}
                     </button>
@@ -469,14 +465,7 @@ function AddProductsModal() {
                 className="h-[42px] cursor-pointer text-white duration-300 ease-in rounded-[12px] border-[1px] border-bg-color px-5 bg-btn-color"
                 type="submit"
               >
-                Qo'shish
-              </button>
-              <button
-                className="h-[42px] cursor-pointer text-white duration-300 ease-in rounded-[12px] border-[1px] border-bg-color px-5 bg-btn-color"
-                type="button"
-                onClick={backButton}
-              >
-                Qaytish
+                Maxsulotlaringizni qo'shing
               </button>
             </div>
           </form>
@@ -487,4 +476,4 @@ function AddProductsModal() {
   );
 }
 
-export default AddProductsModal;
+export default SellPost;

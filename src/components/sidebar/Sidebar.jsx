@@ -48,7 +48,7 @@ function Sidebar({ sidebarMenu }) {
     {
       id: 1,
       name: "E’lon joylash",
-      path: "/post-ad",
+      path: "/sell",
       icon: <MdPostAdd style={{ fontSize: "20px" }} />,
     },
 
@@ -64,7 +64,7 @@ function Sidebar({ sidebarMenu }) {
     {
       id: 1,
       name: "So‘rovlar",
-      path: "/requests",
+      path: "/buy",
       icon: <LuFilePlus2 style={{ fontSize: "20px" }} />,
     },
 
