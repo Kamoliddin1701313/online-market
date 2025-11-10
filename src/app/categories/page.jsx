@@ -1,4 +1,5 @@
 import { get } from "@/lib/api";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import {
@@ -121,9 +122,12 @@ async function Categories() {
   // http://olx.digitallaboratory.uz/categories/
   // icon image
 
+  console.log(res, "QQQQQQQQQQQQQQ");
+
   return (
     <div>
       <h1 className="text-[20px] font-semibold">Kategoriyalar</h1>
+
       <div className="grid grid-cols-4 gap-3 my-5">
         {res &&
           res
@@ -134,14 +138,36 @@ async function Categories() {
                 <Link
                   key={value?.id}
                   href={`/categories/${value?.id}`}
-                  className="group border-sidebar-btn-color bg-white border-[2px] rounded-[32px] px-3 py-4 flex items-center gap-2 hover:bg-border-color duration-300 ease-in"
+                  className="group border-sidebar-btn-color bg-white border-[2px] rounded-[40px] px-3 py-4 flex items-center gap-[10px] hover:bg-border-color duration-300 ease-in"
                 >
-                  <span className="p-[10px] rounded-full grid place-items-center bg-border-color text-[#272727] group-hover:bg-white duration-300 ease-in">
-                    {value?.image == null ? <FaCar /> : value?.image}
-                  </span>
-                  <span className="text-[16px] leading-5">
-                    {value?.name} {value?.icon == null ? "👶" : value?.icon}
-                  </span>
+                  <div className="p-3 rounded-full grid place-items-center bg-sidebar-btn-color text-[#272727] group-hover:bg-white duration-300 ease-in">
+                    {value?.image == null ? (
+                      <FaCar />
+                    ) : (
+                      <Image
+                        width={25}
+                        height={25}
+                        src={value?.icon}
+                        alt="icon"
+                        className="w-[20px] h-[20px] rounded-full object-cover"
+                      />
+                    )}
+                  </div>
+
+                  <div className="text-[16px] leading-5 flex flex-col gap-[6px]">
+                    <span className="font-semibold">{value?.name}</span>
+                    {value?.icon == null ? (
+                      "👶"
+                    ) : (
+                      <Image
+                        width={25}
+                        height={25}
+                        src={value?.icon}
+                        alt="icon"
+                        className="w-[20px] h-[20px] rounded-full object-cover"
+                      />
+                    )}
+                  </div>
                 </Link>
               );
             })}

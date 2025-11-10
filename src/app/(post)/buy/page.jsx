@@ -7,15 +7,20 @@ import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// Xaridor so'rovini yaratish komponenti
 function BuyPost() {
+  // DROPDOWN HOLATLARI: Kategoriya va valyuta dropdownlarini boshqarish
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [subCategoryOpen, setSubCategoryOpen] = useState(false);
   const [selectPriceOpen, setSelectPriceOpen] = useState(false);
+
+  // MA'LUMOTLAR STATE LARI: Kategoriya va subkategoriyalar ro'yxati
   const [categoryName, setCategoryName] = useState([]);
   const [subCategoryName, setSubCategoryName] = useState([]);
-  const [selectedFiles, setSelectedFiles] = useState([]);
-  const router = useRouter();
+  const [selectedFiles, setSelectedFiles] = useState([]); // Yuklangan fayllar
+  const router = useRouter(); // Navigatsiya uchun router
 
+  // DROPDOWN TOGGLE FUNCTIONS: Har bir dropdownni ochish/yopish
   const categoryOpenBtn = () => {
     setCategoryOpen((p) => !p);
   };
@@ -28,6 +33,7 @@ function BuyPost() {
     setSelectPriceOpen((p) => !p);
   };
 
+  // FORM MA'LUMOTLARI: So'rov uchun barcha maydonlar
   const [posts, setPosts] = useState({
     title: "",
     description: "",
@@ -39,35 +45,42 @@ function BuyPost() {
     phone: "",
   });
 
+  // KATEGORIYALARNI OLISH: Serverdan kategoriyalar ro'yxatini olish
   const getCategoryName = async () => {
     const data = await get("categories/");
     setCategoryName(data);
     setSubCategoryName(data);
   };
 
+  // KATEGORIYA TANLASH: Asosiy kategoriyani tanlash va dropdownni yopish
   const selectCategoriyaIdBtn = (id) => {
     setPosts({ ...posts, category_id: id });
     setCategoryOpen(false);
   };
 
+  // SUBKATEGORIYA TANLASH: Subkategoriyani tanlash va dropdownni yopish
   const selectSubCategoriyaIdBtn = (id) => {
     setPosts({ ...posts, subcategory_id: id });
     setSubCategoryOpen(false);
   };
 
+  // VALYUTA TANLASH: Pul birligini tanlash (Sum, $, €)
   const selectMoneyIdBtn = (id) => {
     setPosts({ ...posts, currency_id: id });
     setSelectPriceOpen(false);
   };
 
+  // COMPONENT YUKLANGANDA: Kategoriyalarni yuklash
   useEffect(() => {
     getCategoryName();
   }, []);
 
+  // INPUT O'ZGARISHLARI: Form maydonlaridagi o'zgarishlarni kuzatish
   const changeRequest = (e) => {
     setPosts({ ...posts, [e.target.name]: e.target.value });
   };
 
+  // FAYL YUKLASH: Rasm va boshqa fayllarni yuklash
   const handleFileChange = (e) => {
     const files = e.target.files;
     if (files && files.length > 0) {
@@ -75,12 +88,14 @@ function BuyPost() {
     }
   };
 
+  // SO'ROVNI YUBORISH: Formani serverga yuborish
   const postRequestBtn = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Formaning default submitini to'xtatish
 
     try {
-      const formData = new FormData();
+      const formData = new FormData(); // FormData yaratish
 
+      // Barcha maydonlarni FormData ga qo'shish
       formData.append("title", posts.title);
       formData.append("description", posts.description);
       formData.append("desired_price", posts.desired_price);
@@ -90,26 +105,28 @@ function BuyPost() {
       formData.append("location", posts.location);
       formData.append("phone", posts.phone);
 
+      // API so'rovini yuborish
       const postRequests = await post("buy-requests/", formData);
+
+      // AGAR SO'ROV MUVAFFAQIYATLI BO'LSA: Xabar ko'rsatish va sahifani o'zgartirish
       if (postRequests) {
         toast.success(
           "Ma'lumotlaringiz qo'shildi. Admin tasdiqlagach ko'rinadi!!!",
           {
             onClose: () => {
-              router.push("/");
+              router.push("/"); // Xabar yopilganda asosiy sahifaga o'tish
             },
           }
         );
       }
-
-      // setSelectedFiles([]);
     } catch (error) {
-      console.log(error, "XATO MINADA QARA?");
+      console.log(error, "XATO MINADA QARA?"); // Xatoliklarni konsolga chiqarish
     }
   };
 
   return (
     <>
+      {/* ASOSIY FORM KONTEYNERI */}
       <div className="animate-fadeInDown border-[2px] border-border-color w-full rounded-[18px] p-5 bg-white">
         <h1 className="text-[20px]">Post Ad-Buy Request</h1>
 
@@ -117,7 +134,9 @@ function BuyPost() {
           Create a buyer request.Blue actions indecate publishing.
         </p>
 
+        {/* SO'ROV FORMASI */}
         <form onSubmit={postRequestBtn} className="flex flex-col gap-5 my-3">
+          {/* SARLAVHA MAYDONI */}
           <div className="border-border-color border-[2px] rounded-[18px] w-full p-4">
             <span className="text-border-color">Title</span>
             <input
@@ -129,6 +148,7 @@ function BuyPost() {
             />
           </div>
 
+          {/* ASOSIY KATEGORIYA DROPDOWN */}
           <div className="border-border-color border-[2px] rounded-[18px] w-full p-4">
             <span className="text-border-color">Category *</span>
             <div className="relative">
@@ -149,6 +169,7 @@ function BuyPost() {
                 />
               </button>
 
+              {/* KATEGORIYALAR RO'YXATI */}
               <ul
                 className={`${
                   categoryOpen ? "block" : "hidden"
@@ -168,6 +189,7 @@ function BuyPost() {
             </div>
           </div>
 
+          {/* SUBKATEGORIYA DROPDOWN */}
           <div className="border-border-color border-[2px] rounded-[18px] w-full p-4">
             <span className="text-border-color">Sub Category</span>
             <div className="relative">
@@ -188,6 +210,7 @@ function BuyPost() {
                 />
               </button>
 
+              {/* SUBKATEGORIYALAR RO'YXATI */}
               <ul
                 className={`${
                   subCategoryOpen ? "block" : "hidden"
@@ -207,9 +230,11 @@ function BuyPost() {
             </div>
           </div>
 
+          {/* BYUDJET VA VALYUTA MAYDONI */}
           <div className="border-border-color border-[2px] rounded-[18px] w-full p-4">
             <span className="text-border-color">Budget *</span>
             <div className="flex justify-between items-center gap-4 mt-2">
+              {/* BYUDJET SUMMASI */}
               <input
                 onChange={changeRequest}
                 name="desired_price"
@@ -218,6 +243,7 @@ function BuyPost() {
                 placeholder="Narxini kiriting!!!"
               />
 
+              {/* VALYUTA DROPDOWN */}
               <div className="relative w-[180px]">
                 <button
                   onClick={selectPriceOpenBtn}
@@ -240,6 +266,7 @@ function BuyPost() {
                   />
                 </button>
 
+                {/* VALYUTALAR RO'YXATI */}
                 <ul
                   className={`${
                     selectPriceOpen ? "block" : "hidden"
@@ -280,6 +307,7 @@ function BuyPost() {
             </div>
           </div>
 
+          {/* TAVSIF MAYDONI */}
           <div className="border-border-color border-[2px] rounded-[18px] w-full p-4">
             <span className="text-border-color">Description</span>
             <textarea
@@ -291,6 +319,7 @@ function BuyPost() {
             ></textarea>
           </div>
 
+          {/* FAYL YUKLASH MAYDONI */}
           <div className="border-border-color border-[2px] rounded-[18px] w-full p-4">
             <span className="text-border-color">Attachments (optional)</span>
             <div className="bg-body-color w-full h-[160px] border-border-color border-[2px] rounded-[12px] mt-2">
@@ -311,7 +340,7 @@ function BuyPost() {
               />
             </div>
 
-            {/* Tanlangan fayllarni ko'rsatish */}
+            {/* TANLANGAN FAYLLARNI KO'RSATISH */}
             {selectedFiles.length > 0 && (
               <div className="mt-4">
                 <p className="text-sm text-gray-600">
@@ -337,7 +366,9 @@ function BuyPost() {
             )}
           </div>
 
+          {/* JOYLASHUV VA KONTAKT MAYDONLARI */}
           <div className="flex items-center justify-between gap-4">
+            {/* JOYLASHUV MAYDONI */}
             <div className="border-border-color border-[2px] rounded-[18px] w-full p-4">
               <span className="text-border-color">Location</span>
               <input
@@ -350,6 +381,7 @@ function BuyPost() {
               />
             </div>
 
+            {/* TELEFON RAQAM MAYDONI */}
             <div className="border-border-color border-[2px] rounded-[18px] w-full p-4">
               <span className="text-border-color">Contact info</span>
               <input
@@ -363,6 +395,7 @@ function BuyPost() {
             </div>
           </div>
 
+          {/* YUBORISH TUGMASI */}
           <div className="flex justify-end w-full">
             <button
               type="submit"
@@ -373,6 +406,8 @@ function BuyPost() {
           </div>
         </form>
       </div>
+
+      {/* TOAST NOTIFICATION KONTEYNERI */}
       <ToastContainer autoClose={1200} />
     </>
   );
