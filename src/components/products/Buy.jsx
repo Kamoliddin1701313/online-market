@@ -38,7 +38,7 @@ function Buy() {
 
             <div className="px-4 py-[6px]">
               <button className="bg-btn-color cursor-pointer text-white my-2.5 rounded-2xl py-1.5 px-5 text-center">
-                Buy
+                Sotib olish
               </button>
 
               <h4 className="line-clamp-2 leading-5">{item?.title}</h4>

@@ -128,7 +128,7 @@ async function Categories() {
     <div>
       <h1 className="text-[20px] font-semibold">Kategoriyalar</h1>
 
-      <div className="grid grid-cols-4 gap-3 my-5">
+      <div className="grid grid-cols-4 gap-[10px] my-5">
         {res &&
           res
             ?.slice()
@@ -138,18 +138,18 @@ async function Categories() {
                 <Link
                   key={value?.id}
                   href={`/categories/${value?.id}`}
-                  className="group border-sidebar-btn-color bg-white border-[2px] rounded-[40px] px-3 py-4 flex items-center gap-[10px] hover:bg-border-color duration-300 ease-in"
+                  className="group border-sidebar-btn-color bg-white border-[2px] rounded-[40px] px-3 py-2 flex items-center gap-[10px] hover:bg-border-color duration-300 ease-in"
                 >
-                  <div className="p-3 rounded-full grid place-items-center bg-sidebar-btn-color text-[#272727] group-hover:bg-white duration-300 ease-in">
+                  <div className="w-[50px] h-[50px] rounded-full grid place-items-center bg-sidebar-btn-color text-[#272727] group-hover:bg-white duration-300 ease-in">
                     {value?.image == null ? (
                       <FaCar />
                     ) : (
                       <Image
                         width={25}
                         height={25}
-                        src={value?.icon}
+                        src={value?.image}
                         alt="icon"
-                        className="w-[20px] h-[20px] rounded-full object-cover"
+                        className="w-[25px] h-[25px] object-cover"
                       />
                     )}
                   </div>
@@ -159,13 +159,15 @@ async function Categories() {
                     {value?.icon == null ? (
                       "👶"
                     ) : (
-                      <Image
-                        width={25}
-                        height={25}
-                        src={value?.icon}
-                        alt="icon"
-                        className="w-[20px] h-[20px] rounded-full object-cover"
-                      />
+                      <div>
+                        <Image
+                          width={22}
+                          height={22}
+                          src={value?.icon}
+                          alt="icon"
+                          className="w-[22px] h-[22px] object-cover"
+                        />
+                      </div>
                     )}
                   </div>
                 </Link>

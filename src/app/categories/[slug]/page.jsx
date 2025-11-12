@@ -78,6 +78,8 @@ async function CategoriesDetail({ params }) {
     },
   ];
 
+  console.log(res, "resresresresres");
+
   return (
     <>
       <div className="flex flex-col gap-[10px] bg-[#FFFCF7] border-sidebar-btn-color border-[3px] rounded-[24px] p-5 mb-6">
@@ -110,16 +112,18 @@ async function CategoriesDetail({ params }) {
             className="bg-[#FFF1F0] border-sidebar-btn-color border-[3px] rounded-[24px] p-4 hover:shadow-lg transition-shadow"
           >
             <div className="flex justify-between items-center mb-2">
-              {item.icon == null ? (
+              {item?.category?.icon == null ? (
                 <span className="text-[22px] w-[28px] h-[28px]">🧸</span>
               ) : (
-                <Image
-                  alt="salom"
-                  width={24}
-                  height={24}
-                  className="w-[28px] h-[28px] rounded-full object-cover"
-                  src={item.icon}
-                />
+                <div>
+                  <Image
+                    alt="salom"
+                    width={25}
+                    height={25}
+                    className="w-[25px] h-[25px] object-cover"
+                    src={item?.category?.image}
+                  />
+                </div>
               )}
 
               <GrFormNext className="text-[20px]" />
@@ -130,16 +134,18 @@ async function CategoriesDetail({ params }) {
                 {item.title}
               </h3>
 
-              {item.icon == null ? (
+              {item?.category?.icon == null ? (
                 <span className="text-[22px] w-[26px] h-[26px]">🧸</span>
               ) : (
-                <Image
-                  alt="salom"
-                  width={24}
-                  height={24}
-                  className="w-[26px] h-[26px] rounded-full object-cover"
-                  src={item.icon}
-                />
+                <div>
+                  <Image
+                    src={item?.category?.icon}
+                    alt="salom"
+                    width={22}
+                    height={22}
+                    className="w-[22px] h-[22px] object-cover"
+                  />
+                </div>
               )}
             </div>
 
