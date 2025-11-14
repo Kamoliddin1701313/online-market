@@ -128,7 +128,7 @@ async function Categories() {
     <div>
       <h1 className="text-[20px] font-semibold">Kategoriyalar</h1>
 
-      <div className="grid grid-cols-4 gap-[10px] my-5">
+      <div className="grid grid-cols-4 gap-[10px] my-5 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1">
         {res &&
           res
             ?.slice()
@@ -154,7 +154,7 @@ async function Categories() {
                     )}
                   </div>
 
-                  <div className="text-[16px] leading-5 flex flex-col gap-[6px]">
+                  <div className="text-[16px] leading-5 flex flex-col gap-[6px] sm:gap-1">
                     <span className="font-semibold">{value?.name}</span>
                     {value?.icon == null ? (
                       "👶"

@@ -11,8 +11,14 @@ import { Provider } from "react-redux";
 
 function Providers({ children }) {
   const [sidebarMenu, setSidebarMenu] = useState(false);
+  const [toggleSidebarMenuPhone, setToggleSidebarMenuPhone] = useState(false);
+
   const toggleSidebarMenu = () => {
     setSidebarMenu((p) => !p);
+  };
+
+  const toggleSidebarMenuPhoneBtn = () => {
+    setToggleSidebarMenuPhone((p) => !p);
   };
 
   return (
@@ -28,8 +34,10 @@ function Providers({ children }) {
           <div className="relative mt-[70px] w-full">
             <div
               className={`${
-                sidebarMenu ? "w-[100px]" : "w-[290px]"
-              } fixed z-10 h-[100vh] transition-all duration-300 ease-in bg-sidebar-color`}
+                sidebarMenu
+                  ? "w-[100px] xl:w-[80px]"
+                  : "w-[290px] xl:w-[270px] lg:w-[240px]"
+              } fixed z-20 h-[100vh] transition-all duration-300 ease-in bg-sidebar-color md:hidden`}
             >
               <Sidebar sidebarMenu={sidebarMenu} />
 
@@ -41,11 +49,32 @@ function Providers({ children }) {
               </button>
             </div>
 
+            <div className="hidden md:block fixed top-[70px] left-0 right-0 z-20">
+              {toggleSidebarMenuPhone && (
+                <div className="animate-fadeInDown">
+                  <Sidebar sidebarMenu={sidebarMenu} />
+                </div>
+              )}
+
+              <button
+                className={`${
+                  toggleSidebarMenuPhone
+                    ? "bg-btn-color text-white"
+                    : "bg-white"
+                } p-2 block mx-auto`}
+                onClick={toggleSidebarMenuPhoneBtn}
+              >
+                <IoSettingsOutline className="text-[20px]" />
+              </button>
+            </div>
+
             {/* Main content */}
             <div
               className={`${
-                sidebarMenu ? "ml-[100px]" : "ml-[290px]"
-              } transition-all duration-300 ease-in min-h-screen py-10 pl-5`}
+                sidebarMenu
+                  ? "ml-[100px] xl:ml-[80px] md:ml-0"
+                  : "ml-[290px] xl:ml-[270px] lg:ml-[240px] md:ml-0"
+              } transition-all duration-300 ease-in min-h-screen py-10 pl-5 xl:pr-3 md:pr-5`}
             >
               {children}
             </div>

@@ -18,34 +18,39 @@ async function Favorites() {
   return (
     <div>
       {/* FILTR PANELI: Mahsulotlarni filtrlash va tartiblash uchun tugmalar */}
-      <div className="p-3 flex items-center gap-5 border-[2px] rounded-[16px]">
-        {/* ASOSIY FILTR TUGMASI: Barcha filtr parametrlarini ochish */}
-        <button className="border-[2px] rounded-[14px] h-[48px] px-5 flex items-center gap-2 bg-white font-medium">
-          <span>Filter</span> <PiSlidersHorizontalBold className="mt-1" />
-        </button>
 
-        {/* NARX FILTRI: Mahsulot narxlari oralig'ini belgilash */}
-        <button className="border-[2px] rounded-[14px] h-[48px] px-5 flex items-center gap-2 bg-white font-medium">
-          Narx oralig'i
-        </button>
+      <div className="relative">
+        <div className="border-[2px] rounded-[16px] w-full p-3 overflow-auto no-scrollbar">
+          <div className="flex w-[700px] items-center justify-between rounded-xl">
+            {/* ASOSIY FILTR TUGMASI: Barcha filtr parametrlarini ochish */}
+            <button className="flex items-center justify-center gap-2 h-[42px] w-[100px] bg-white border-[2px] rounded-xl font-medium hover:bg-gray-50 duration-300 ease-in-out">
+              <span>Filter</span> <PiSlidersHorizontalBold className="mt-1" />
+            </button>
 
-        {/* KATEGORIYA DROPDOWN: Mahsulot kategoriyalari bo'yicha filtrlash */}
-        <CategoryDropdown />
+            {/* NARX FILTRI: Mahsulot narxlari oralig'ini belgilash */}
+            <button className="flex items-center justify-center gap-2 h-[42px] w-[130px] bg-white border-[2px] rounded-xl font-medium hover:bg-gray-50 duration-300 ease-in-out">
+              Narx oralig'i
+            </button>
 
-        {/* TANLASH TUGMASI: Mahsulotlarni tanlash va solishtirish */}
-        <button className="border-[2px] rounded-[14px] h-[48px] px-5 flex items-center gap-2 bg-white font-medium">
-          <span>Tanlash</span> <LuChartNoAxesColumnIncreasing />
-        </button>
+            {/* KATEGORIYA DROPDOWN: Mahsulot kategoriyalari bo'yicha filtrlash */}
+            <CategoryDropdown />
 
-        {/* FILTRLARNI TOZALASH: Barcha qo'yilgan filtrlarni olib tashlash */}
-        <button className="border-[2px] rounded-[14px] h-[48px] px-5 flex items-center gap-2 bg-white font-medium">
-          <MdRefresh />
-          <span>Filterlarni tozalash</span>
-        </button>
+            {/* TANLASH TUGMASI: Mahsulotlarni tanlash va solishtirish */}
+            <button className="flex items-center justify-center gap-2 h-[42px] w-[110px] bg-white border-[2px] rounded-xl font-medium hover:bg-gray-50 duration-300 ease-in-out">
+              <span>Tanlash</span> <LuChartNoAxesColumnIncreasing />
+            </button>
+
+            {/* FILTRLARNI TOZALASH: Barcha qo'yilgan filtrlarni olib tashlash */}
+            <button className="flex items-center justify-center gap-2 h-[42px] w-[180px] bg-white border-[2px] rounded-xl font-medium hover:bg-gray-50 duration-300 ease-in-out">
+              <MdRefresh />
+              <span>Filterlarni tozalash</span>
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* MAHSULOTLAR RO'YXATI: Filtrlangan mahsulotlarni ko'rsatish */}
-      <div className="grid grid-cols-3 gap-3.5 mt-5 animate-fadeInUp">
+      <div className="grid grid-cols-3 gap-3.5 mt-5 animate-fadeInUp xl:grid-cols-2 md:gap-2.5 sm:grid-cols-1">
         {/* AGAR MAHSULOTLAR BO'L MASA: Bo'sh sahifa ko'rsatish */}
         {respons?.length === 0 ? (
           <h1>Malumot yo'q</h1>
@@ -58,7 +63,7 @@ async function Favorites() {
               className="bg-white rounded-[12px] overflow-hidden"
             >
               {/* MAHSULOT RASMI: Mahsulotning asosiy rasmi */}
-              <div className="w-full h-[180px] relative">
+              <div className="w-full h-[180px] relative xl:h-[200px]">
                 <Image
                   src={item.images[0]?.image || "/no-image.png"}
                   alt={item?.title}
@@ -75,7 +80,7 @@ async function Favorites() {
               </div>
 
               {/* MAHSULOT MA'LUMOTLARI: Sarlavha, narx va joylashuv */}
-              <div className="px-4 py-2 flex flex-col gap-[6px]">
+              <div className="px-4 py-2 flex flex-col gap-[6px] lg:px-3">
                 {/* MAHSULOT NOMI: Mahsulotning to'liq nomi */}
                 <h4 className="line-clamp-2 leading-5 font-semibold">
                   {item?.title}
@@ -94,14 +99,14 @@ async function Favorites() {
                 {/* ACTION TUGMALARI: Savatchaga qo'shish va o'chirish */}
                 <div className="flex items-center gap-2">
                   {/* SAVATCHAGA QO'SHISH: Mahsulotni xarid qilish */}
-                  <button className="bg-btn-color cursor-pointer text-white my-2.5 rounded-[10px] py-3 px-3 flex items-start justify-center gap-2">
-                    <MdShoppingCartCheckout className="mt-1 text-[20px]" />
+                  <button className="bg-btn-color cursor-pointer text-white my-2.5 rounded-[10px] py-3 px-3 flex items-start justify-center gap-2 xl:py-2 lg:text-[14px] lg:gap-[6px] md:gap-1 md:px-2">
+                    <MdShoppingCartCheckout className="mt-1 text-[20px] lg:text-[15px]" />
                     <span>Qo'shish</span>
                   </button>
 
                   {/* O'CHIRISH: Mahsulotni sevimlilardan olib tashlash */}
-                  <button className="bg-btn-color cursor-pointer text-white my-2.5 rounded-[10px] py-3 px-3 flex items-start justify-center gap-2">
-                    <IoCloseSharp className="mt-[2px] text-[22px] text-yellow-600" />
+                  <button className="bg-btn-color cursor-pointer text-white my-2.5 rounded-[10px] py-3 px-3 flex items-start justify-center gap-2 xl:py-2 lg:text-[14px] lg:gap-[6px] md:gap-1 md:px-2">
+                    <IoCloseSharp className="mt-[2px] text-[22px] text-yellow-600 lg:text-[18px]" />
                     <span>O'chirish</span>
                   </button>
                 </div>

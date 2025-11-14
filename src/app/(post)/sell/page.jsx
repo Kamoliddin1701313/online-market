@@ -197,16 +197,16 @@ function SellPost() {
   return (
     <>
       <div className="bg-sidebar-color justify-center items-center">
-        <div className="animate-fadeInDown w-full mx-auto rounded-xl p-6 bg-white">
+        <div className="animate-fadeInDown w-full mx-auto rounded-xl p-6 bg-white md:p-4">
           <h2 className="font-normal text-[28px] mb-4 text-border-color">
             Maxsulotlar qo'shish
           </h2>
 
-          <div className="flex items-center gap-4">
-            <div className="mb-[14px]">
+          <div className="flex items-center gap-4 sm:flex-col">
+            <div className="mb-[14px] sm:mb-0 sm:w-full">
               <button
                 onClick={() => setCategoriyModal((p) => !p)}
-                className="h-[42px] min-w-[200px] text-border-color rounded-[12px] border-[1px] border-bg-color bg-transparent duration-300 ease-in hover:bg-bg-color"
+                className="h-[42px] min-w-[200px] text-border-color rounded-[12px] border-[1px] border-bg-color bg-transparent duration-300 ease-in hover:bg-bg-color sm:w-full"
               >
                 {categoriyaSelect
                   ? categoryId?.name.charAt(0).toUpperCase() +
@@ -220,10 +220,10 @@ function SellPost() {
               </small>
             </div>
 
-            <div className="mb-[14px]">
+            <div className="mb-[14px] sm:w-full">
               <button
                 onClick={() => setSubCategoriyModal((p) => !p)}
-                className="h-[42px] min-w-[200px] text-border-color outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent duration-300 ease-in hover:bg-bg-color"
+                className="h-[42px] min-w-[200px] text-border-color outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent duration-300 ease-in hover:bg-bg-color sm:w-full"
               >
                 {categoriyaSubSelect
                   ? categorySubId?.name.charAt(0).toUpperCase() +
@@ -286,7 +286,7 @@ function SellPost() {
             onSubmit={handleAddCategoriya}
             className="flex flex-col gap-3.5"
           >
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center justify-between gap-4 sm:flex-col">
               <div className="w-full">
                 <input
                   onChange={productValue}
@@ -304,7 +304,7 @@ function SellPost() {
                 </small>
               </div>
 
-              <div className="w-[220px]">
+              <div className="w-[220px] sm:w-full">
                 <div className="relative w-full h-[42px] outline-none rounded-[12px] border-[1px] border-bg-color bg-transparent">
                   <button
                     onClick={openSelectBtn}
@@ -371,7 +371,7 @@ function SellPost() {
               </small>
             </div>
 
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center justify-between gap-4 sm:flex-col">
               <div className="w-full">
                 <input
                   onChange={productValue}

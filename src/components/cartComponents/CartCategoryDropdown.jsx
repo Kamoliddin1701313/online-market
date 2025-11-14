@@ -29,11 +29,11 @@ function CartCategoryDropdown() {
   ];
 
   return (
-    <div className="relative font-medium">
+    <div className="font-medium">
       {/* ASOSIY TOGLE BUTTON: Dropdown ni ochish/yopish tugmasi */}
       <button
         onClick={toggleDropdown}
-        className="flex items-center gap-2 border-[2px] rounded-[14px] h-[48px] px-5 bg-white hover:bg-gray-50 transition-colors"
+        className="flex items-center gap-2 border-[2px] rounded-[14px] h-[42px] px-5 bg-white hover:bg-gray-50 transition-colors"
       >
         <span>Kategoriya</span>
         {/* STRELKA IKONKASI: Dropdown holatiga qarab aylanishi */}
@@ -46,7 +46,7 @@ function CartCategoryDropdown() {
 
       {/* DROPDOWN MENYU: Faqat ochiq holatda ko'rinadi */}
       {isOpen && (
-        <div className="absolute top-[52px] left-0 w-full z-10">
+        <div className="absolute top-[64px] left-1/3 sm:left-1/4 lg:w-2/5 sm:w-3/5 w-1/4 z-10">
           {/* KATEGORIYALAR RO'YXATI: Vergul shaklida ko'rsatiladi */}
           <ul className="flex flex-col bg-white border-[2px] rounded-[12px] overflow-hidden shadow-lg">
             {categories.map((category) => (

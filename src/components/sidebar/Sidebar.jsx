@@ -19,28 +19,28 @@ function Sidebar({ sidebarMenu }) {
       id: 1,
       name: "Bosh sahifa",
       path: "/",
-      icon: <FaHome style={{ fontSize: "20px" }} />,
+      icon: <FaHome />,
     },
 
     {
       id: 2,
       name: "Kategoriyalar",
       path: "/categories",
-      icon: <TbAdjustmentsHorizontal style={{ fontSize: "20px" }} />,
+      icon: <TbAdjustmentsHorizontal />,
     },
 
     {
       id: 3,
       name: "Sevimlilar",
       path: "/favorites",
-      icon: <FaRegHeart style={{ fontSize: "20px" }} />,
+      icon: <FaRegHeart />,
     },
 
     {
       id: 4,
       name: "Savatcha",
       path: "/cart",
-      icon: <PiShoppingCartBold style={{ fontSize: "20px" }} />,
+      icon: <PiShoppingCartBold />,
     },
   ];
 
@@ -49,14 +49,14 @@ function Sidebar({ sidebarMenu }) {
       id: 1,
       name: "E’lon joylash",
       path: "/sell",
-      icon: <MdPostAdd style={{ fontSize: "20px" }} />,
+      icon: <MdPostAdd />,
     },
 
     {
       id: 2,
       name: "Mening e’lonlarim",
       path: "/my-listings",
-      icon: <TbAdjustmentsHorizontal style={{ fontSize: "20px" }} />,
+      icon: <TbAdjustmentsHorizontal />,
     },
   ];
 
@@ -65,19 +65,23 @@ function Sidebar({ sidebarMenu }) {
       id: 1,
       name: "So‘rovlar",
       path: "/buy",
-      icon: <LuFilePlus2 style={{ fontSize: "20px" }} />,
+      icon: <LuFilePlus2 />,
     },
 
     {
       id: 2,
       name: "Yaqinda ko‘rilganlar",
       path: "/recently-viewed",
-      icon: <FaRegClock style={{ fontSize: "20px" }} />,
+      icon: <FaRegClock />,
     },
   ];
 
   return (
-    <div className={`flex w-full flex-col ${sidebarMenu ? "pr-3" : "px-4"}`}>
+    <div
+      className={`flex w-full flex-col bg-white ${
+        sidebarMenu ? "px-[6px]" : "px-4 xl:px-2"
+      }`}
+    >
       <span
         className={`${
           !sidebarMenu ? "px-4" : "px-[6px] text-center text-[14px]"
@@ -91,6 +95,7 @@ function Sidebar({ sidebarMenu }) {
           return (
             <Link
               href={value.path}
+              prefetch={false}
               key={value?.id}
               className={`${
                 !sidebarMenu ? "px-4" : "px-2 justify-center"
@@ -101,14 +106,10 @@ function Sidebar({ sidebarMenu }) {
                       : ""
                   }`}
             >
-              <span>{value?.icon}</span>
+              <span className="text-[20px] xl:text-[18px]">{value?.icon}</span>
 
               {!sidebarMenu ? (
-                <span
-                  className={`text-[16px] 
-    ${!sidebarMenu ? "opacity-100" : "opacity-0 hidden"}
-  `}
-                >
+                <span className="text-[16px] transition-all duration-300 ease-in-out xl:text-[15px]">
                   {value.name}
                 </span>
               ) : (
@@ -142,9 +143,10 @@ function Sidebar({ sidebarMenu }) {
                       : ""
                   }`}
             >
-              <span>{value?.icon}</span>
+              <span className="text-[20px] xl:text-[18px]">{value?.icon}</span>
+
               {!sidebarMenu ? (
-                <span className="text-[16px] transition-all duration-300 ease-in-out">
+                <span className="text-[16px] transition-all duration-300 ease-in-out xl:text-[15px]">
                   {value.name}
                 </span>
               ) : (
@@ -178,10 +180,10 @@ function Sidebar({ sidebarMenu }) {
                       : ""
                   }`}
             >
-              <span>{value?.icon}</span>
+              <span className="text-[20px] xl:text-[18px]">{value?.icon}</span>
 
               {!sidebarMenu ? (
-                <span className="text-[16px] transition-all duration-300 ease-in-out">
+                <span className="text-[16px] transition-all duration-300 ease-in-out xl:text-[15px]">
                   {value.name}
                 </span>
               ) : (

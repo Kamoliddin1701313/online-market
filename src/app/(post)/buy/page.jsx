@@ -233,7 +233,7 @@ function BuyPost() {
           {/* BYUDJET VA VALYUTA MAYDONI */}
           <div className="border-border-color border-[2px] rounded-[18px] w-full p-4">
             <span className="text-border-color">Budget *</span>
-            <div className="flex justify-between items-center gap-4 mt-2">
+            <div className="flex justify-between items-center gap-4 mt-2 sm:flex-col">
               {/* BYUDJET SUMMASI */}
               <input
                 onChange={changeRequest}
@@ -244,7 +244,7 @@ function BuyPost() {
               />
 
               {/* VALYUTA DROPDOWN */}
-              <div className="relative w-[180px]">
+              <div className="relative w-[180px] sm:w-full">
                 <button
                   onClick={selectPriceOpenBtn}
                   type="button"
@@ -367,7 +367,7 @@ function BuyPost() {
           </div>
 
           {/* JOYLASHUV VA KONTAKT MAYDONLARI */}
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center justify-between gap-4 lg:flex-col">
             {/* JOYLASHUV MAYDONI */}
             <div className="border-border-color border-[2px] rounded-[18px] w-full p-4">
               <span className="text-border-color">Location</span>

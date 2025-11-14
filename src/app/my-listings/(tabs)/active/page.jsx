@@ -42,7 +42,7 @@ function Active({ activeTab }) {
         </div>
       ) : (
         /* MAHSULOTLAR RO'YXATI: Yuklanish tugagach ko'rsatiladi */
-        <div className="grid grid-cols-4 gap-3.5 mt-5 animate-fadeInUp">
+        <div className="grid grid-cols-4 gap-3.5 mt-5 animate-fadeInUp xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 sm:gap-5">
           {/* AGAR MAHSULOTLAR BO'SH BO'LSA: Xabar ko'rsatish */}
           {active?.length === 0 ? (
             <h1>Malumot yo'q</h1>
@@ -55,7 +55,7 @@ function Active({ activeTab }) {
                 className="bg-white rounded-[12px] overflow-hidden"
               >
                 {/* MAHSULOT RASMI: Mahsulotning asosiy rasmi */}
-                <div className="w-full h-[200px] relative">
+                <div className="w-full h-[200px] relative sm:h-[240px]">
                   <Image
                     src={item.images[0]?.image || "/no-image.png"}
                     alt={item?.title}
@@ -92,7 +92,7 @@ function Active({ activeTab }) {
                 {/* MAHSULOT MA'LUMOTLARI: Sarlavha, narx va joylashuv */}
                 <div className="px-4 py-2">
                   {/* SOTIB OLISH TUGMASI: Mahsulotni xarid qilish */}
-                  <button className="bg-btn-color cursor-pointer text-white my-2.5 rounded-2xl py-1.5 px-5 text-center">
+                  <button className="bg-btn-color cursor-pointer text-white my-2.5 rounded-xl py-1.5 px-5 text-center">
                     Buy
                   </button>
 

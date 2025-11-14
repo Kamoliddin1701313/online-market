@@ -75,26 +75,28 @@ function MyListings() {
 
   return (
     <div className="">
-      <div className="flex items-center h-[48px] justify-between">
-        {tabs &&
-          tabs?.map((value) => {
-            return (
-              <button
-                onClick={() => activeButton(value?.id)}
-                key={value?.id}
-                className={`flex items-center w-full justify-center bg-[#F3F4F6] relative gap-2 h-full px-8 hover:bg-white duration-400 ease-out border-b-[2px] border-[#748384] ${
-                  activeTab === value.id
-                    ? "bg-white text-[#042826] font-semibold before:absolute before:content-[''] before:w-full before:h-[3px] before:bg-[#042826] before:left-0 before:-bottom-[2px]"
-                    : "text-[#748384]"
-                }`}
-              >
-                {value?.icon}
-                <span>{value?.name}</span>
-              </button>
-            );
-          })}
+      <div className="overflow-auto no-scrollbar">
+        <div className="flex items-center h-[48px] justify-between w-[968px] lg:h-[42px]">
+          {tabs &&
+            tabs?.map((value) => {
+              return (
+                <button
+                  onClick={() => activeButton(value?.id)}
+                  key={value?.id}
+                  className={`flex items-center w-full justify-center bg-[#F3F4F6] relative gap-2 h-full px-8 hover:bg-white duration-400 ease-out border-b-[2px] border-[#748384] ${
+                    activeTab === value.id
+                      ? "bg-white text-[#042826] font-semibold before:absolute before:content-[''] before:w-full before:h-[3px] before:bg-[#042826] before:left-0 before:-bottom-[2px]"
+                      : "text-[#748384]"
+                  }`}
+                >
+                  {value?.icon}
+                  <span>{value?.name}</span>
+                </button>
+              );
+            })}
+        </div>
       </div>
-      
+
       <div className="my-5">{content()}</div>
     </div>
   );

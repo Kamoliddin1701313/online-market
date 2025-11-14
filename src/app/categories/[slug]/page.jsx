@@ -11,82 +11,13 @@ async function CategoriesDetail({ params }) {
     cache: "no-store",
   });
 
-  const subcategory = [
-    {
-      id: 1,
-      smaylik: "🧸",
-      title: "O'yinchoqlar",
-      description: "Konstruktorlar, puzzle o'yinlari, stol o'yinlari",
-      img: "/images/toys.jpg",
-    },
-    {
-      id: 2,
-      smaylik: "👕",
-      title: "Bolalar kiyimlari",
-      description: "Yozgi, qishki kiyimlar, alacasimonlar",
-      img: "/images/kids-clothes.jpg",
-    },
-    {
-      id: 3,
-      smaylik: "🚗",
-      title: "Aravachalar",
-      description: "Yurish aravachalari, transport vositalari",
-      img: "/images/strollers.jpg",
-    },
-    {
-      id: 4,
-      smaylik: "🎨",
-      title: "Go'zallik va badiiy mahsulotlar",
-      description: "Ranglar, qalamlar, bo'yoqlar va boshqa ijodiy materiallar",
-      img: "/images/art-supplies.jpg",
-    },
-    {
-      id: 5,
-      smaylik: "📚",
-      title: "O'quv qurilmalari",
-      description:
-        "Daftarlar, qalamlar, ruchkalar va boshqa yozuv materiallari",
-      img: "/images/school-supplies.jpg",
-    },
-    {
-      id: 6,
-      smaylik: "📖",
-      title: "Bolalar kitoblari",
-      description: "Ertaqlar, interaktiv kitoblar, qo'shiq kitoblari",
-      img: "/images/kids-books.jpg",
-    },
-    {
-      id: 7,
-      smaylik: "🛏️",
-      title: "Bolalar mebellari",
-      description: "Krovatlar, stollar, o'tiradigan joylar to'plamlari",
-      img: "/images/kids-furniture.jpg",
-    },
-    {
-      id: 8,
-      smaylik: "🎪",
-      title: "O'yin maydonchasi jihozlari",
-      description: "Swinglar, sandiqlar, o'yin uylari",
-      img: "/images/playground.jpg",
-    },
-    {
-      id: 9,
-      smaylik: "🎮",
-      title: "Elektron o'yinlar",
-      description: "O'yin konsollari, planshetlar, interaktiv o'yinlar",
-      img: "/images/electronic-games.jpg",
-    },
-  ];
-
-  console.log(res, "resresresresres");
-
   return (
     <>
-      <div className="flex flex-col gap-[10px] bg-[#FFFCF7] border-sidebar-btn-color border-[3px] rounded-[24px] p-5 mb-6">
+      <div className="flex flex-col gap-[10px] bg-[#FFFCF7] border-sidebar-btn-color border-[3px] rounded-[24px] p-5 mb-6 xl:p-4 xl:mb-4">
         <div className="flex items-center gap-3">
           <Link
             href="/categories"
-            className="flex w-fit items-center gap-[6px] bg-[#FFF1F0] border-sidebar-btn-color border-[3px] px-3 py-2 rounded-[16px] hover:bg-[#FFE4E2] transition-colors"
+            className="flex w-[110px] justify-center items-center gap-[6px] bg-[#FFF1F0] border-sidebar-btn-color border-[3px] py-[6px] rounded-[16px] hover:bg-[#FFE4E2] transition-colors"
           >
             <GrFormPreviousLink className="text-[20px] mt-[2px]" />
             <span>Orqaga</span>
@@ -97,14 +28,14 @@ async function CategoriesDetail({ params }) {
           </div>
         </div>
 
-        <p className="text-gray-700 text-lg mt-2">
+        <p className="text-gray-700 text-lg mt-2 xl:mt-0">
           {res[0]?.category?.description == ""
             ? "Description bo'sh"
             : res[0]?.category?.description}
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-3 items-stretch p-5 bg-white border-sidebar-btn-color border-[3px] rounded-[24px]">
+      <div className="grid grid-cols-3 gap-3 items-stretch p-5 bg-white border-sidebar-btn-color border-[3px] rounded-[24px] xl:p-4 lg:grid-cols-2 sm:grid-cols-1">
         {res?.map((item) => (
           <Link
             href={`${slug}/${item?.id}`}
@@ -154,7 +85,7 @@ async function CategoriesDetail({ params }) {
               alt={item?.title}
               width={160}
               height={160}
-              className="w-full h-[160px] object-cover rounded-[16px]"
+              className="w-full h-[160px] object-cover rounded-[16px] sm:h-[200px]"
             />
 
             <p className="text-gray-600 line-clamp-1 mt-2">

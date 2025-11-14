@@ -6,7 +6,7 @@ import { PiShoppingCartBold } from "react-icons/pi";
 
 function ProductsList({ productList }) {
   return (
-    <div className="grid grid-cols-4 gap-3.5 mt-5 animate-fadeInUp">
+    <div className="grid grid-cols-4 gap-3.5 mt-5 animate-fadeInUp xl:grid-cols-3 lg:grid-cols-2 lg:gap-2.5 sm:grid-cols-1">
       {productList?.map((item, index) => (
         <Link
           href={`/products/${item.id}`}
@@ -45,13 +45,13 @@ function ProductsList({ productList }) {
           </div>
 
           <div className="px-4 py-[6px]">
-            <button className="bg-btn-color cursor-pointer text-white my-2.5 rounded-2xl py-1.5 px-5 text-center">
+            <button className="bg-btn-color cursor-pointer text-white my-2.5 py-1.5 px-5 text-center rounded-xl md:my-1">
               Buy
             </button>
 
             <h4 className="line-clamp-2 leading-5">{item?.title}</h4>
 
-            <div className="flex items-center justify-between my-2.5 gap-[15px]">
+            <div className="flex items-center justify-between my-2.5 gap-[15px] md:my-2">
               <span className="min-w-[50px]">{parseFloat(item?.price)}</span>
               <span className="line-clamp-1">{item?.location}</span>
             </div>

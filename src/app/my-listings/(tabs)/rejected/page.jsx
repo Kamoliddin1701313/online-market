@@ -35,7 +35,7 @@ function Rejected({ activeTab }) {
           <LoadingCircul />
         </div>
       ) : (
-        <div className="grid grid-cols-4 gap-3.5 mt-5 animate-fadeInUp">
+        <div className="grid grid-cols-4 gap-3.5 mt-5 animate-fadeInUp xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 sm:gap-5">
           {active?.length === 0 ? (
             <h1>Malumot yo'q</h1>
           ) : (
@@ -45,7 +45,7 @@ function Rejected({ activeTab }) {
                 key={index}
                 className="bg-white rounded-[12px] overflow-hidden"
               >
-                <div className="w-full h-[200px] relative">
+                <div className="w-full h-[200px] relative sm:h-[240px]">
                   <Image
                     src={item.images[0]?.image || "/no-image.png"}
                     alt={item?.title}
