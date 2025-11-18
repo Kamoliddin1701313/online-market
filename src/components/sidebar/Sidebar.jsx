@@ -78,7 +78,7 @@ function Sidebar({ sidebarMenu }) {
 
   return (
     <div
-      className={`flex w-full flex-col bg-white ${
+      className={`flex w-full flex-col h-full ${
         sidebarMenu ? "px-[6px]" : "px-4 xl:px-2"
       }`}
     >

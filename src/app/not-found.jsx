@@ -4,10 +4,11 @@ import not_found from "../../public/images/note_found.webp";
 
 function NotFound() {
   return (
-    <div className="h-[90vh]">
+    <div className="h-[90vh] relative">
       <Image
         src={not_found}
-        className="w-full h-full"
+        fill
+        className="object-cover"
         alt="Page not found illustration"
       />
     </div>

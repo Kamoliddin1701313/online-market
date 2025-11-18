@@ -4,6 +4,7 @@ const initialState = {
   logoutModal: false,
   addProducts: false,
   access: null,
+  card:[]
 };
 const slice = createSlice({
   name: "cart",
@@ -33,6 +34,8 @@ const slice = createSlice({
     addProductsModal: (state) => {
       state.addProducts = !state.addProducts;
     },
+
+
   },
 });
 

@@ -167,7 +167,7 @@ async function Card() {
                     </div>
 
                     {/* REMOVE BUTTON: Mahsulotni savatchadan o'chirish */}
-                    <button className="flex items-center gap-2 border-[2px] h-[42px] px-5 rounded-[12px] sm:px-3 sm:text-[14px]">
+                    <button className="flex items-center gap-2 border-[2px] h-[42px] px-5 rounded-[12px] sm:px-3 sm:text-[14px] duration-300 ease-in hover:bg-[#FF6347] hover:text-white hover:border-[#FF6347]">
                       <FaTrash /> Olib tashlash
                     </button>
                   </div>
