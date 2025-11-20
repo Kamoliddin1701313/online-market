@@ -20,15 +20,15 @@ async function Favorites() {
       {/* FILTR PANELI: Mahsulotlarni filtrlash va tartiblash uchun tugmalar */}
 
       <div className="relative">
-        <div className="border-[2px] rounded-[16px] w-full p-3 overflow-auto no-scrollbar">
+        <div className="border-[2px] border-sidebar-btn-color rounded-[16px] w-full p-3 overflow-auto no-scrollbar lg:border-none lg:px-0">
           <div className="flex w-[700px] items-center justify-between rounded-xl">
             {/* ASOSIY FILTR TUGMASI: Barcha filtr parametrlarini ochish */}
-            <button className="flex items-center justify-center gap-2 h-[42px] w-[100px] bg-white border-[2px] rounded-xl font-medium hover:bg-gray-50 duration-300 ease-in-out">
+            <button className="flex items-center justify-center gap-2 h-[42px] w-[100px] border-sidebar-btn-color bg-white border-[2px] rounded-xl font-medium hover:bg-sidebar-btn-color duration-300 ease-in-out">
               <span>Filter</span> <PiSlidersHorizontalBold className="mt-1" />
             </button>
 
             {/* NARX FILTRI: Mahsulot narxlari oralig'ini belgilash */}
-            <button className="flex items-center justify-center gap-2 h-[42px] w-[130px] bg-white border-[2px] rounded-xl font-medium hover:bg-gray-50 duration-300 ease-in-out">
+            <button className="flex items-center justify-center gap-2 h-[42px] w-[130px] border-sidebar-btn-color bg-white border-[2px] rounded-xl font-medium hover:bg-sidebar-btn-color duration-300 ease-in-out">
               Narx oralig'i
             </button>
 
@@ -36,12 +36,12 @@ async function Favorites() {
             <CategoryDropdown />
 
             {/* TANLASH TUGMASI: Mahsulotlarni tanlash va solishtirish */}
-            <button className="flex items-center justify-center gap-2 h-[42px] w-[110px] bg-white border-[2px] rounded-xl font-medium hover:bg-gray-50 duration-300 ease-in-out">
+            <button className="flex items-center justify-center gap-2 h-[42px] w-[110px] border-sidebar-btn-color bg-white border-[2px] rounded-xl font-medium hover:bg-sidebar-btn-color duration-300 ease-in-out">
               <span>Tanlash</span> <LuChartNoAxesColumnIncreasing />
             </button>
 
             {/* FILTRLARNI TOZALASH: Barcha qo'yilgan filtrlarni olib tashlash */}
-            <button className="flex items-center justify-center gap-2 h-[42px] w-[180px] bg-white border-[2px] rounded-xl font-medium hover:bg-gray-50 duration-300 ease-in-out">
+            <button className="flex items-center justify-center gap-2 h-[42px] w-[180px] border-sidebar-btn-color bg-white border-[2px] rounded-xl font-medium hover:bg-sidebar-btn-color duration-300 ease-in-out">
               <MdRefresh />
               <span>Filterlarni tozalash</span>
             </button>
@@ -99,13 +99,13 @@ async function Favorites() {
                 {/* ACTION TUGMALARI: Savatchaga qo'shish va o'chirish */}
                 <div className="flex items-center gap-2">
                   {/* SAVATCHAGA QO'SHISH: Mahsulotni xarid qilish */}
-                  <button className="bg-btn-color cursor-pointer text-white my-2.5 rounded-[10px] py-3 px-3 flex items-start justify-center gap-2 xl:py-2 lg:text-[14px] lg:gap-[6px] md:gap-1 md:px-2">
+                  <button className="bg-btn-color cursor-pointer text-white my-2.5 rounded-[10px] py-2 px-3 flex items-start justify-center gap-2 lg:text-[14px] lg:gap-[6px] md:gap-1 md:px-2">
                     <MdShoppingCartCheckout className="mt-1 text-[20px] lg:text-[15px]" />
                     <span>Qo'shish</span>
                   </button>
 
                   {/* O'CHIRISH: Mahsulotni sevimlilardan olib tashlash */}
-                  <button className="bg-btn-color cursor-pointer text-white my-2.5 rounded-[10px] py-3 px-3 flex items-start justify-center gap-2 xl:py-2 lg:text-[14px] lg:gap-[6px] md:gap-1 md:px-2">
+                  <button className="bg-btn-color cursor-pointer text-white my-2.5 rounded-[10px] py-2 px-3 flex items-start justify-center gap-2 lg:text-[14px] lg:gap-[6px] md:gap-1 md:px-2">
                     <IoCloseSharp className="mt-[2px] text-[22px] text-yellow-600 lg:text-[18px]" />
                     <span>O'chirish</span>
                   </button>

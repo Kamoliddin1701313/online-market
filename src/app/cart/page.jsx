@@ -26,17 +26,17 @@ async function Card() {
         <div className="overflow-auto no-scrollbar">
           <div className="w-[850px] flex items-center justify-between gap-3">
             {/* SEARCH INPUT: Mahsulotlarni qidirish uchun input maydoni */}
-            <div className="flex w-[280px] items-center gap-2 border-[2px] rounded-[14px] h-[48px] px-5 bg-white font-medium">
+            <div className="flex w-[280px] border-[#7a7a7a25] items-center gap-2 border-[2px] rounded-[14px] h-[42px] px-5 bg-white font-medium hover:bg-sidebar-btn-color duration-300 ease-in">
               <FaSearch className="text-[14px]" />
               <input
                 type="text"
                 placeholder="Mahsulot qidirish ..."
-                className="h-full outline-none border-none w-full"
+                className="h-full outline-none border-none w-full bg-transparent font-normal"
               />
             </div>
 
             {/* HOME BUTTON: Asosiy sahifaga qaytish tugmasi */}
-            <button className="border-[2px] rounded-[14px] h-[48px] w-[120px] px-5 flex items-center gap-2 bg-white font-medium">
+            <button className="border-[2px] border-[#7a7a7a25] rounded-[14px] h-[42px] w-[120px] px-5 flex items-center gap-2 bg-white font-medium hover:bg-sidebar-btn-color duration-300 ease-in">
               <span>Home</span> <PiSlidersHorizontalBold className="mt-1" />
             </button>
 
@@ -44,12 +44,12 @@ async function Card() {
             <CartCategoryDropdown />
 
             {/* FAVORITES BUTTON: Sevimli mahsulotlar sahifasiga o'tish */}
-            <button className="border-[2px] rounded-[14px] h-[48px] w-[120px] px-5 flex items-center gap-2 bg-white font-medium">
+            <button className="border-[2px] border-[#7a7a7a25] rounded-[14px] h-[42px] w-[120px] px-5 flex items-center gap-2 bg-white font-medium hover:bg-sidebar-btn-color duration-300 ease-in">
               <FaRegHeart /> <span>Sevimli</span>
             </button>
 
             {/* CART BUTTON: Savatcha sahifasiga o'tish (aktiv holatda) */}
-            <button className="border-[2px] border-[#FC7A00] rounded-[14px] h-[48px] w-[150px] px-5 flex items-center gap-2 bg-[#FC7A00] text-white font-medium">
+            <button className="border-[2px] border-[#FC7A00] rounded-[14px] h-[42px] w-[150px] px-5 flex items-center gap-2 bg-[#FC7A00] text-white font-medium">
               <LuShoppingCart />
               <span>Savatcha</span>
             </button>

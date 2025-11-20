@@ -45,7 +45,7 @@ function ProductsList({ productList }) {
           </div>
 
           <div className="px-4 py-[6px]">
-            <button className="bg-btn-color cursor-pointer text-white my-2.5 py-1.5 px-5 text-center rounded-xl md:my-1">
+            <button className="bg-sidebar-btn-color cursor-pointer border-[2px] border-[#7a7a7a25] my-2.5 py-1 px-5 text-center rounded-[10px] md:my-1">
               Buy
             </button>
 

@@ -28,7 +28,7 @@ function CategoryDropdown() {
     <div className="font-medium">
       <button
         onClick={toggleDropdown}
-        className="flex items-center gap-2 border-[2px] rounded-xl h-[42px] px-5 bg-white hover:bg-gray-50 transition-colors"
+        className="flex items-center gap-2 border-[2px] border-sidebar-btn-color rounded-xl h-[42px] px-5 bg-white hover:bg-sidebar-btn-color transition-colors"
       >
         <span>Kategoriya</span>
         <IoIosArrowDown
@@ -39,7 +39,7 @@ function CategoryDropdown() {
       </button>
 
       {isOpen && (
-        <div className="absolute top-[64px] left-1/3 sm:left-1/4 lg:w-2/5 sm:w-3/5 w-1/4 z-10">
+        <div className="animate-fadeInDown absolute top-[68px] left-1/3 sm:left-1/4 lg:w-2/5 sm:w-3/5 w-1/4 z-10 border-sidebar-btn-color">
           <ul className="flex flex-col bg-white border-[2px] rounded-xl overflow-hidden shadow-lg">
             {categories.map((category) => (
               <li
