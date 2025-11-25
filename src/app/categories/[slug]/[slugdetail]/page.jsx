@@ -16,11 +16,11 @@ async function Page({ params }) {
 
   return (
     <>
-      <div className="flex flex-col gap-[10px] bg-[#FFFCF7] border-sidebar-btn-color border-[3px] rounded-[24px] p-5 mb-6 xl:p-4 xl:mb-4">
+      <div className="flex flex-col gap-[10px] bg-sidebar-color border-sidebar-btn-color border-[3px] rounded-[24px] p-5 mb-6 xl:p-4 xl:mb-4">
         <div className="flex items-center gap-3">
           <Link
             href={`/categories/${slug}`}
-            className="flex w-[110px] gap-[6px] bg-[#FFF1F0] border-sidebar-btn-color border-[3px] px-3 py-2 rounded-[16px] hover:bg-[#FFE4E2] transition-colors"
+            className="flex w-[110px] gap-[6px] bg-primary-blue border-sidebar-btn-color border-[3px] px-3 py-2 rounded-[16px] hover:bg-[#FFE4E2] transition-colors"
           >
             <GrFormPreviousLink className="text-[20px] mt-[2px]" />
             <span>Orqaga</span>
@@ -38,12 +38,12 @@ async function Page({ params }) {
         </p>
       </div>
 
-      <div className="p-5 bg-white border-sidebar-btn-color border-[3px] rounded-[24px] lg:p-4">
+      <div className="p-5 bg-sidebar-color border-sidebar-btn-color border-[3px] rounded-[24px] lg:p-4">
         <h1 className="text-gray-600 text-[20px] font-semibold sm:text-[18px]">
           Natijalar : {respons?.length}
         </h1>
 
-        <div className="grid grid-cols-3 items-stretch gap-4 overflow-hidden mt-3 lg:grid-cols-2 lg:gap-3 md:gap-2 sm:grid-cols-1 sm:gap-5">
+        <div className="grid grid-cols-3 items-stretch gap-4 overflow-hidden mt-3 lg:grid-cols-2 lg:gap-3 md:gap-2 sm:grid-cols-1 sm:gap-5 pb-5">
           {respons?.map((item) => {
             return (
               <div
@@ -80,11 +80,11 @@ async function Page({ params }) {
                   </div>
 
                   <div className="flex justify-between items-stretch gap-2">
-                    <button className="border-sidebar-btn-color border-[3px] rounded-[16px] p-3 hover:bg-gray-50 transition-colors duration-200">
+                    <button className="border-sidebar-btn-color border-[3px] rounded-[16px] p-3 bg-border-color text-white transition-colors duration-200">
                       <FaRegHeart className="text-[15px]" /> Saqlash
                     </button>
 
-                    <button className="bg-[#FB97A1] border-sidebar-btn-color border-[3px] rounded-[16px] p-3 transition-colors duration-300">
+                    <button className="bg-primary-blue border-sidebar-btn-color border-[3px] rounded-[16px] p-3 transition-colors duration-300 text-white">
                       <RiEyeLine className="text-[16px]" />
                       Ko'rish
                     </button>

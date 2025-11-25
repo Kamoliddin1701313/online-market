@@ -22,6 +22,8 @@ module.exports = {
         "body-color": "#F7F8FA",
         "bg-categoryModalColor": "#F6F9FA",
         "btn-color": "#0D5950",
+        "primary-blue": "#2798F5",
+        "light-blue": "#8FCAFA",
       },
 
       keyframes: {

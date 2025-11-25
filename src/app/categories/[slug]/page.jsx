@@ -13,11 +13,11 @@ async function CategoriesDetail({ params }) {
 
   return (
     <>
-      <div className="flex flex-col gap-[10px] bg-[#FFFCF7] border-sidebar-btn-color border-[3px] rounded-[24px] p-5 mb-6 xl:p-4 xl:mb-4">
+      <div className="flex flex-col gap-[10px] bg-sidebar-color border-sidebar-btn-color border-[3px] rounded-[24px] p-5 mb-6 xl:p-4 xl:mb-4">
         <div className="flex items-center gap-3">
           <Link
             href="/categories"
-            className="flex w-[110px] justify-center items-center gap-[6px] bg-[#FFF1F0] border-sidebar-btn-color border-[3px] py-[6px] rounded-[16px] hover:bg-[#FFE4E2] transition-colors"
+            className="flex w-[110px] justify-center items-center gap-[6px] bg-primary-blue border-sidebar-btn-color border-[3px] py-[6px] rounded-[16px] transition-colors"
           >
             <GrFormPreviousLink className="text-[20px] mt-[2px]" />
             <span>Orqaga</span>
@@ -35,12 +35,12 @@ async function CategoriesDetail({ params }) {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-3 items-stretch p-5 bg-white border-sidebar-btn-color border-[3px] rounded-[24px] xl:p-4 lg:grid-cols-2 sm:grid-cols-1">
+      <div className="grid grid-cols-3 gap-3 items-stretch p-5 bg-sidebar-color border-sidebar-btn-color border-[3px] rounded-[24px] xl:p-4 lg:grid-cols-2 sm:grid-cols-1">
         {res?.map((item) => (
           <Link
             href={`${slug}/${item?.id}`}
             key={item.id}
-            className="bg-[#FFF1F0] border-sidebar-btn-color border-[3px] rounded-[24px] p-4 hover:shadow-lg transition-shadow"
+            className="bg-body-color border-sidebar-btn-color border-[3px] rounded-[24px] p-4 hover:shadow-lg transition-shadow"
           >
             <div className="flex justify-between items-center mb-2">
               {item?.category?.icon == null ? (
