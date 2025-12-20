@@ -35,7 +35,7 @@ function Products() {
   };
 
   return (
-    <div className="flex flex-col xl:pr-4">
+    <div className="flex flex-col">
       <div className="animate-fadeInDown w-full border-[2px] p-3 shadow-[0_0_8px_rgba(0,0,0,0.15)] border-sidebar-btn-color rounded-[20px] md:border-none md:shadow-none md:px-0">
         <div className="flex justify-between items-center xl:overflow-auto xl:no-scrollbar gap-5 xl:gap-3 rounded-[10px]">
           <div className="flex items-center gap-5 xl:gap-3">

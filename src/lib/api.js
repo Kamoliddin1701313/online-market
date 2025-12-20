@@ -15,6 +15,7 @@ export async function apiFetch(endpoint, options = {}) {
     headers,
     ...options,
   });
+  console.log(res, "MANA XATO KAMOLIDDIN");
 
   if (!res.ok) {
     const error = await res.text();
