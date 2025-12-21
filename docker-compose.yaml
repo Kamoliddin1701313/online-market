@@ -3,9 +3,7 @@ version: "3.9"
 services:
   frontend:
     container_name: onlinemarket_frontend
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     restart: always
     env_file:
       - .env.production
